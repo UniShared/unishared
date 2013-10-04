@@ -1,0 +1,24 @@
+<div id="container_people" class="form hide">
+	<button class="close hide">&times;</button>
+	<div class="alert alert-error hide"></div>
+	<div class="form_wrap">
+		<h2>Invite <span class="people-role"></span></h2>
+        <form id="form_people">
+            <div id="people_emails_container">
+                <span class="jfmfs-title">Enter their e-mail(s):</span>
+                <ul id="people_emails_list">
+                    <div>
+                        <input id="people_emails" name="people_emails" type="text" />
+                        <span class="icon-plus-sign"></span>
+                    </div>
+                </ul>
+            </div>
+            <div id="jfmfs-container"></div>
+
+			<input id="people_facebook_ids" name="people_facebook_ids" type="hidden">
+
+			<button type="button" class="btn btn-primary prev_button">Prev</button>
+			<button type="submit" class="btn btn-success next_button">Go to my {{ PUBLIC_DOCUMENT_MODEL_NAME }}!</button>
+		</form>
+	</div>
+</div>

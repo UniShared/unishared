@@ -1,0 +1,108 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+{% load verbatim %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block logo_link %}#home{% endblock %}
+
+{% block nav-links %}
+<ul style="float:left;">
+	<li>
+		<a href="#section-share">
+		<p class="nav-link" style="color:#3cbdee;">
+			Take
+		</p>
+		<p>
+			your {{ PUBLIC_DOCUMENT_MODEL_NAME }}
+		</p></a>
+	</li>
+	<li>
+		<a href="#section-participate">
+		<p class="nav-link" style="color:#f18a16;">
+			Participate
+		</p>
+		<p>
+			in {{ PUBLIC_DOCUMENT_MODEL_NAME }}
+		</p></a>
+	</li>
+    <li>
+        <a href="#section-hubs">
+            <p class="nav-link" style="color:rgba(80, 80, 80, 0.53);">
+                Join
+            </p>
+            <p>
+                hubs
+            </p></a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block css %}
+    {% compressed_css 'home' %}
+{% endblock %}
+
+{% block js %}
+{% require_module 'main_modules/home' %}
+{% endblock %}
+
+{% block content %}
+<input type="hidden" id="id_unistar" value="{{ request.user.id }}" />
+<div id="main">
+    <section id="section-share">
+    <div id="banner-top">
+        <h2 class="introducing_text">Note-taking, made social</h2>
+        	<div class="container">
+     			<iframe width="420" height="315" src="http://www.youtube.com/embed/qqJ2-A4eAII?wmode=opaque" frameborder="0" allowfullscreen style="float: left;padding: 42px;"></iframe>
+{#     			<div style="padding-left: 581px;padding-top: 181px;">#}
+{#					<a class="facebook_login_button" href="{% url socialauth_begin backend='facebook' %}"></a>#}
+{#				</div>#}
+        	</div>
+		</div>
+    	<div style="height:190px;width:960px;margin:0 auto;">
+			<div class="learn">
+				<h2 class="collaborative">Collaborative</h2>
+	            <div class="learn_border learn_border_blue"></div>
+				<p>
+                    What’s the point for everyone to take almost the same {{ PUBLIC_DOCUMENT_MODEL_NAME }} on their own? By allowing you to take them collaboratively in real-time with your friends, we make your learning faster, better and more interactive. And people online will help you too.
+				</p>
+			</div>
+			<div class="learn">
+				<h2 class="efficient">Efficient</h2>
+	            <div class="learn_border learn_border_orange"></div>
+				<p>
+                    We’re powered by Google Drive, giving you access to all the features of the latest technology in real-time note-taking. Security, automatic back-up, formatting, comments, chat,… it’s time to stop using your laptop, tablet or phone just like typewriters.
+				</p>
+			</div>
+			<div class="learn" style="margin-bottom: 80px;">
+				<h2 class="open">Open</h2>
+	            <div class="learn_border learn_border_blue"></div>
+				<p>
+                    Don’t you think knowledge should be available for everyone? Let’s face it, the majority of what we’re learning is wasted. So why not participating in making knowledge universal just by taking your {{ PUBLIC_DOCUMENT_MODEL_NAME }} online? It will enable you to meet people interested in your field too.
+				</p>
+			</div>
+		</div>
+		        
+	</section>
+	<section id="section-participate">
+        <div id="section-documents">
+            <h2 style="clear:both; margin-bottom:0px;"class="introducing_text">It's time to truly learn with people</h2>
+            <p class="sub_text">Featured collaborative {{ PUBLIC_DOCUMENT_MODEL_NAME }}</p>
+            {% include "search_panel.html" %}
+
+            {% include "activity_feed.html" %}
+        </div>
+        <div id="section-hubs">
+            <p class="sub_text">Featured collaborative hubs <a id="more_about_hubs" href="{% url website.views.hubs %}" target="_blank">(more information)</a></p>
+            {% include "search_panel.html" %}
+
+            {% include "activity_feed.html" %}
+        </div>
+
+	</section>    
+</div>
+{% endblock %} 

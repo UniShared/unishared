@@ -1,0 +1,16 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+<p>
+    Howdy {{first_name}},<br><br>
+
+    People you may know are now using <a style="{{ link_underlined }}" href="{{ BASE_URL }}?{{ ga_campaign_params }}">UniShared</a>:
+    <ul>
+    {% for friend_profile in friends_profile %}
+        <li><a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.profile friend_profile.user.username %}?{{ ga_campaign_params }}">{{ friend_profile.user.first_name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    What about <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.create_document %}?{{ ga_campaign_params }}">taking notes</a> with them for your next class, conference or group work? You’ll see, it’ll be fun. Just invite them to any doc or ask them to invite you.
+</p>
+{% endblock %}

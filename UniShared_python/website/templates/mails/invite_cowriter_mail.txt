@@ -1,0 +1,19 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content  %}
+    <p>
+        Hi, <br><br>
+
+        {{first_name}} is inviting you to take notes collaboratively in real-time and opening them to the world. Will you help to learn differently? <br><br>
+
+        {% if document %}
+        {{document.title}} ({{document.url}})
+        Collaborative and open {{PUBLIC_DOCUMENT_MODEL_NAME}} ({{document.url}})
+        {% elif hub %}
+        {{hub.title}} ({{hub.url}})
+        Collaborative and open hub ({{hub.url}})
+        {% endif %}
+
+        {% include "mails/start_time_fragment.txt" %}
+    </p>
+{% endblock %}

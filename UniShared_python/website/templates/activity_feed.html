@@ -1,0 +1,124 @@
+{% load verbatim %}
+{% load staticfiles %}
+
+<div class="feed">
+    <div style="clear:both;"></div>
+    <div class="loading">
+        <img src="{% static "images/loading.gif" %}">
+    </div>
+
+    <div class="container">
+        <div class="action_feed_item add_feed_item hide">
+            <a target="_blank"><h2><span style="font-size: 26px; color:#3cbdee;">+</span> Start yours</h2></a>
+        </div>
+        <div class="action_feed_item nothing-shared-yet hide"><h2>Nothing shared yet.</h2></div>
+        <div class="items"></div>
+        <div class="action_feed_item see-all hide"><a><h2>See all <span class="object-name"></span></h2><a></div>
+    </div>
+
+    <div class="pagination hide"></div>
+    <div id="modal-delete-document" class="modal modal-delete-document hide fade">
+        <div class="modal-body">
+            <p>
+                If you <span class="text-participate">created</span> this document, it will be deleted for everyone.
+            </p>
+            <p>
+                If you <span class="text-share">didn't</span>, it will be removed only from your learning portfolio
+            </p>
+        </div>
+        <div class="modal-footer">
+            <div class="buttons-group">
+                <a href="#" class="btn" data-dismiss="modal">Cancel deletion</a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal">Confirm deletion</a>
+            </div>
+
+            <a href="mailto:clement@unishared.com">Report an issue</a>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="cache hide"></div>
+
+    {% verbatim %}
+    <div id="note_template" class="hide">
+        <div id="{{ resource_id }}" class="feed_item feed_item_{{user_role}} {{document_current}} {{document_new}}">
+            <div class="feed_item_title">
+                <a class="feed_item_link" href="/notes/{{resource_id}}" target="_blank">
+                    <h2>{{title}}</h2>
+                </a>
+                {{#can_delete}}<a href="#modal-delete-document" role="button" class="close" data-toggle="modal">&times;</a>{{/can_delete}}
+            </div>
+            <div class="feed_item_body">
+
+
+                {{#hasAuthors}}
+                <div class="co_writers_carousel">
+                    {{#hasMoreThan5Authors}}
+                    <a class="carousel_prev"><span>prev</span></a>
+                    <a class="carousel_next"><span>next</span></a>
+                    {{/hasMoreThan5Authors}}
+                    <div class="co_writers">
+                        <ul>
+                            {{#authors}}
+                            <li>
+                                <a href="/profile/{{username}}" class="info" title="{{first_name}}" target="_blank">
+                                    <img class="userphoto thumbnail_32x32" src="{{picture}}" height="32px"
+                                         width="32px"> </a>
+                            </li>
+                            {{/authors}}
+                        </ul>
+                    </div>
+                </div>
+                {{/hasAuthors}}
+            </div>
+            <div class="feed_item_bottom">
+                <p class="last_document_edit">
+                    last modification: {{updated}}
+                </p>
+                {{#nb_views}}
+                <div class="nb_views_container">
+                    <div class="nb_view_eye"></div>
+                    <p class="nb_view">{{nb_views}}</p></div>
+                {{/nb_views}}
+            </div>
+        </div>
+    </div>
+
+    <div id="hub_template" class="hide">
+        <div class="hub_feed_item feed_item feed_item_{{user_role}} {{item_is_current}} {{item_is_new}}">
+            {{#hub}}
+            <div class="feed_item_title">
+                <a href="/{{ username }}" target="_blank">
+                    <img class="userphoto thumbnail_32x32" src="{% endverbatim %}{% static "images/hub_picto.png" %}{% verbatim %}">
+                        <h2>{{first_name}}</h2>
+                    </a>
+                </div>
+                {{/hub}}
+                <div class="feed_item_body">
+                    {{#hasAuthors}}
+                    <div class="co_writers_carousel">
+                        {{#hasMoreThan5Authors}}
+                        <a class="carousel_prev"><span>prev</span></a>
+                        <a class="carousel_next"><span>next</span></a>
+                        {{/hasMoreThan5Authors}}
+                        <div class="co_writers">
+                            <ul>
+                                {{#authors}}
+                                <li>
+                                    <a href="/{{ username }}" class="info" title="{{first_name}}" target="_blank">
+                                        <img class="userphoto thumbnail_32x32" src="{{picture}}" height="32px" width="32px">
+                                    </a>
+                                </li>
+                                {{/authors}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{/hasAuthors}}
+                </div>
+                <div class="feed_item_bottom"></div>
+
+            </div>
+        </div>
+    {% endverbatim %}
+</div>

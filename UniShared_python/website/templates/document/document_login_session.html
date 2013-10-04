@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<div id="container_login_session" class="form hide" xmlns="http://www.w3.org/1999/html">
+        <div class="form_wrap">
+            <h2 style="clear:both;">To join the collaborative {{ PUBLIC_DOCUMENT_MODEL_NAME }}</h2>
+            <div id="document_picto">
+                <img src="{% static "images/document_collab_picto.png" %}">
+            </div>
+            <div id="login-text">
+                <!--	Login to access Google Docs	-->
+                <a href="{% url socialauth_begin backend='facebook' %}?next={% url website.views.login %}?next={{ request.path }}" class="facebook_login_button" alt="login with facebook"></a>
+                <p class="login-facebook-text">It’s the fastest way to:</p>
+                <ul>
+                    <li>create your learning portfolio and let you invite friends if you want</li>
+                    <li>be sure you're not a robot or a free rider - or worse, a free rider robot</li>
+                </ul>
+                <p class="login-facebook-text">Oh and we'll never mess up with your data.</p>
+
+                <p><a href="http://unishared.uservoice.com">Ask for an other login option</a></p>
+            </div>
+
+        </div>
+</div>

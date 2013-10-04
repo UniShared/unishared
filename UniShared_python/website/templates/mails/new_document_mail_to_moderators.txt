@@ -1,0 +1,7 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+    A new document has started by {{ creator.first_name }} {{ BASE_URL }}{% url website.views.profile creator.username %}: {{document.title}} {{document.url}}
+
+    {% include "mails/start_time_fragment.txt" %}
+{% endblock %}

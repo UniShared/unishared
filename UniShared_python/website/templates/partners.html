@@ -1,0 +1,103 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+
+{% block title %}
+Partners
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/partners.css"  %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js %}
+    {% require_module 'main_modules/base' %}
+{% endblock %}
+
+{% block content %} 
+<div class="bg_light">
+	<div class="wrap" style="padding-top:80px; margin-bottom:70px;">
+		<h2 class="support">Organizations</h2>
+        <div class="partner">
+            <img src="{% static "images/partners_logo/imaginek12.png" %}">
+            <div class="mask">
+                <h3><a href="http://imaginek12.com" target="_blank">Imagine K-12</a></h3>
+                <p><a href="{% url website.views.profile 'imaginek12' %}">We are part of the winter 2013 cohort.</a></p>
+            </div>
+        </div>
+        <div class="partner">
+            <img src="{% static "images/partners_logo/escpeurope.png" %}">
+            <div class="mask">
+                <h3><a href="http://www.unishared.com/escpeurope" target="_blank">ESCP Europe</a></h3>
+                <p>They trust us to provide a crowdsourced <a href="{% url website.views.profile 'escpeurope-innovation' %}" target="_blank">online learning platform</a>.</p>
+            </div>
+        </div>
+        <div class="partner">
+            <img src="{% static "images/partners_logo/bluefactory.png" %}">
+            <div class="mask">
+                <h3><a href="http://blue-factory.eu" target="_blank">Blue Factory</a></h3>
+                <p>They incubate us.</p>
+            </div>
+        </div>
+
+        <div class="partner">
+		    <img src="{% static "images/partners_logo/tedx.png"  %}">
+		    <div class="mask">  
+		    <h3><a href="http://www.tedxparisuniversites.com/2012/index.php" target="_blank">TEDx</a></h3>  
+		    <p>Clément won Tedx Paris Universités talking about the <a href="http://www.youtube.com/watch?v=BWRn3W8QI_0" target="_blank">genesis of UniShared</a></p>  
+		    </div>  
+		</div>
+		<div class="partner">
+		    <img src="{% static "images/partners_logo/forbes.png" %}">
+		    <div class="mask">  
+		    <h3><a href="http://www.forbes.com/" target="_blank">Forbes</a></h3>  
+		    <p>They covered the early days of <a href="http://www.forbes.com/sites/ricardogeromel/2012/09/17/unishared-revolution-in-online-education-beyond-coursera-edx-and-udacity/" target="_blank">UniShared</a>.</p>
+		    </div>  
+		</div>
+		<div class="partner">  
+		    <img src="{% static "images/partners_logo/google.png" %}">
+		    <div class="mask">  
+		    <h3><a href="http://www.google.com" target="_blank">Google</a></h3>  
+		    <p>They selected us for their startup program and invited us to <a href="{% url website.views.profile 'googleio' %}" target="_blank">Google I/O</a>.</p>
+		    </div>  
+		</div>
+		<div class="partner">  
+		    <img src="{% static "images/partners_logo/enactus.jpg"  %}">
+		    <div class="mask">  
+		    <h3><a href="http://enactus.org/" target="_blank">Enactus</a></h3>
+		    <p>The student community is opening their conferences through <a href="{% url website.views.profile 'enactus' %}">UniShared</a>.</p>
+		    </div>  
+		</div>
+		<div class="partner">  
+		    <img src="{% static "images/partners_logo/ljdge.png"  %}">
+		    <div class="mask">  
+		    <h3>Le Journal des Grandes Écoles</h3>  
+		    <p>They covered our <a href="http://journaldesgrandesecoles.com/quand-l%E2%80%99escp-europe-revolutionne-l%E2%80%99education/">partnership with ESCP Europe</a></p>
+		    </div>  
+		</div>
+		<div class="partner">  
+		    <img src="{% static "images/partners_logo/kkbb.png" %}">
+		    <div class="mask">  
+		    <h3><a href="http://www.kisskissbankbank.com/en" target="_blank">KissKissBankBank</a></h3>  
+		    <p>They help us to <a href="http://www.kisskissbankbank.com/open-the-25-best-classes-of-the-world"> open the 25 best classes of the world</a>.</p>
+		    </div>  
+		</div>
+			<div class="partner">  
+		    <img src="{% static "images/partners_logo/locita.png"  %}">
+		    <div class="mask">  
+		    <h3><a href="http://fr.locita.com/" target="_blank">Locita</a></h3>  
+		    <p>They are writing <a href="http://fr.locita.com/?s=unishared&x=13&y=13" target="_blank">articles about us</a>.</p>
+		    </div>  
+		</div>
+		<!-- Always at the end -->
+		<div class="partner">  
+		    <img src="{% static "images/partners_logo/you.png" %}">
+		    <div class="mask">  
+		    <h3>Everyone can help</h3>  
+		    <p>Just send an email to <a href="mailto:clement@unishared.com" target="_blank"> clement@unishared.com</a></p>
+		    </div>  
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+{% endblock %}

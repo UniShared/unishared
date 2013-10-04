@@ -1,0 +1,42 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}
+Featured hubs
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/hub/hubs.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %} 
+<div class="bg_light">
+	<div class="wrap" style="padding-top:80px; margin-bottom:70px;">
+		<div id="hubs-title">
+			<h2 class="introducing_text">Featured hubs</h2>
+			<h3><a href="{% url website.views.create_hub %}">want yours ?</a></h3>
+		</div>
+
+
+
+		<div id="hubs">
+			{% for hub_profile in hubs_profiles %}
+			<div class="document_item document_no_interaction">
+				<img src="{{ MEDIA_URL }}{{hub_profile.image}}" width="{{im.width}}" height="{{im.height}}">
+
+				<a href="{% url website.views.profile hub_profile.user.username %}" target="_blank">
+				<div class="mask">
+					<h3>{{hub_profile.user.first_name}}</h3>
+					<p>
+						{{hub_profile.about_me}}
+					</p>
+				</div> </a>
+			</div>
+			{% endfor %}
+
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</div>
+{% endblock %}

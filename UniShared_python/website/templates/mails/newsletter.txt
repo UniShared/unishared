@@ -1,0 +1,19 @@
+Hi {{first_name}},
+ 
+On behalf of all of the members of the community ( https://www.facebook.com/unishared ), I wish you a Happy New Year. Hope it will be full of learning and people discoveries, overcoming social, economic or geographic limitations.
+
+To help you with this, we are about to kickstart a UniShared ( http://unishared.com/?{{ ga_campaign }} ) hotspot in the San Francisco Bay Area, with the support of the Imagine K-12 ( http://imaginek12.com ) accelerator program. It will allow us to keep improving our global platform, connecting local communities all over the world.
+
+If you haven’t yet, you can try to create a collaborative document ( http://unishared.com/class/create/?{{ ga_campaign }} ) or participate to existing ones ( http://unishared.com/profile/?view=all_classes&{{ ga_campaign }} ). To make everyone's learning more efficient, collaborative and open in 2013.
+
+What about for example:
+·  "Collaborative consumption" ( http://unishared.com/class/1tw7WIglDzDVvF2hTTCWjzInkWs4krG9EszQu7UhxyzI?{{ ga_campaign }} ) by the OuiShare crew ( http://unishared.com/ouishare/?{{ ga_campaign }} )
+·  "Continuous Innovation" ( http://unishared.com/class/1_0vd-MiJwNfDtRj6Ed0dOvs08W17vygxVa8r0gTsB-I?{{ ga_campaign }} ) from IESEG by Adrien ( http://unishared.com/profile/119?{{ ga_campaign }} ), Vincent ( http://unishared.com/profile/617?{{ ga_campaign }} ), Jeanne-Marie ( http://unishared.com/profile/1524?{{ ga_campaign }} ), Jayajanani ( http://unishared.com/profile/2091?{{ ga_campaign }} ) and Philippe ( http://unishared.com/profile/2094?{{ ga_campaign }} )
+·  "Creating shared value at the base of the pyramid in developing countries" ( http://unishared.com/class/16baPWS7TJcwSElsqZTx3yf6Kh1LbSupgtpyx1ZHz1Qg?{{ ga_campaign }} ) by the MakeSense Crew ( http://unishared.com/convergences?{{ ga_campaign }} )
+·  All classes ( http://unishared.com/profile/?view=all_classes&{{ ga_campaign }} )
+
+And tell us what you think about it because we're learning too :).
+
+Cheers,
+-- Clément & the UniShared ( http://unishared.com/?{{ ga_campaign }} ) team
+Facebook (www.facebook.com/unishared), Twitter (https://twitter.com/UniShared)

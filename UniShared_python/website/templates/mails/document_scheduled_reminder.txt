@@ -1,0 +1,21 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content  %}
+{% if first_name %}
+Hi {{ first_name }}.
+{% else %}
+Hi,
+{% endif %}
+
+Your session is starting in an hour. Your collaborative document is up and ready here:
+
+{{document.title}} ({{document.url}})
+Collaborative and open notes ({{document.url}})
+
+If you haven't yet, don't forget to invite your friends, it's way more fun when collaborative.
+{% if document.event_id %}
+Your Facebook event is still here: https://facebook.com/events/{{document.event_id}}/
+{% endif %}
+
+Happy note-taking!
+{% endblock %}

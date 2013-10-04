@@ -1,0 +1,6 @@
+{% if document.start_time %}
+This session will start on {{ document.start_time }}.
+{% if document.event_id %}
+A Facebook event has been created about these notes. (https://facebook.com/events/{{document.event_id}}/)
+{% endif %}
+{% endif %}

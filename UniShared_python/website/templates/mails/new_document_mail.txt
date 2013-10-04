@@ -1,0 +1,11 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+    Congrats {{ creator.first_name }},
+
+    You’ve just created:
+    {{document.title}} ({{ document.url }}?{{ ga_campaign_params }})
+    It is stored in your learning porfolio ({{ BASE_URL }}{% url website.views.profile creator.username %}?{{ ga_campaign_params }})
+
+    {% include "mails/start_time_fragment.txt" %}
+{% endblock %}

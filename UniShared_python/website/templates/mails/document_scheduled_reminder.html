@@ -1,0 +1,24 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content  %}
+    <p>
+        {% if creator %}
+            Hi {{ creator.first_name }}.
+        {% else %}
+            Hi,
+        {% endif %}
+        <br><br>
+        Your session is starting in an hour. Your collaborative document is up and ready here:
+
+        <a style="{{ link_underlined }}" href="{{document.url}}">{{document.title}}</a><br>
+        <a style="{{ link_underlined }}" href="{{document.url}}">Collaborative and open notes</a><br><br>
+
+        If you haven't yet, don't forget to invite your friends, it's way more fun when collaborative. <br>
+        {% if document.event_id %}
+        Your Facebook event is still <a href="https://facebook.com/events/{{document.event_id}}/">here</a>.
+        {% endif %}
+
+        <br><br>
+        Happy note-taking!
+    </p>
+{% endblock %}

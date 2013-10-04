@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+<div id="container_help_first_participation" class="form hide">
+    <button class="close hide">&times;</button>
+    <div class="alert alert-error hide"></div>
+    <div class="form_wrap">
+        <h2>These notes have been taken <span class="text-participate">collaboratively</span> in real time</h2>
+        <img src="{% static "images/multi_contributing.png" %}"/>
+        <div class="buttons_group">
+            <a class="btn prev_button">Back to notes</a>
+            <a href="{% url website.views.about %}" target="_blank" class="btn btn-success next_button">More about UniShared</a>
+        </div>
+    </div>
+</div>

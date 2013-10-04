@@ -1,0 +1,37 @@
+{% extends "base_new_design.html" %}
+{% load django_static %}
+
+{% block title %}
+Log in
+{% endblock %}
+
+{% block metadata %}
+<meta property="og:title" content="UniShared - session login">
+<meta property="og:image"
+      content="{{ STATIC_URL }}images/document_collab_picto_facebook_sharing.png" >
+{% endblock %}
+
+{% block css %}
+<link href="{{ STATIC_URL }}css/class/common_form.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div id="container" class="sign-in">
+	<div class="form">
+		<div class="form_wrap">
+			<img src="{{ STATIC_URL }}images/document_picto.png"  style="float: left; margin-left: 50px; margin-bottom: 10px;">
+			<div style="float:left; text-align:left; margin-left: 10px; padding:0; font-size: 24px;">
+				<p style="font-size: 24px; margin-top: 22px;">We love people who:</p>
+				<ul>
+					<li>Improve the doc</li>
+					<li>Comment</li>
+					<li>Chat</li>
+				</ul>
+			</div>
+			<h2 style="clear:both;">Join the session</h2>
+			<!--	Login to access Google Docs	-->
+			<a href="{% url socialauth_begin backend='facebook' %}?next={{request.GET.next}}" class="facebook_login_button" alt="login with facebook"></a>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+Hi {{user.first_name}},
+
+Are you still going to classes or conferences where you could take notes with others? Still wanna learn with awesome people from all over the world?
+
+Prepare your next session by starting your document ({{ BASE_URL }}{% url website.views.create_document %}?{{ ga_campaign_params }}) now and scheduling it for your next class session.
+{% endblock %}

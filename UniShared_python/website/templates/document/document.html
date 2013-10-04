@@ -1,0 +1,103 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+{% load thumbnail %}
+
+{% block title %}
+{{document.title}}
+{% endblock %}
+
+{% block metadata %}
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}: http://ogp.me/ns/fb/{{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}#">
+<meta property="og:type"   content="{{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}:{{ FACEBOOK_OPEN_GRAPH_DOCUMENT_TYPE }}" />
+<meta property="og:url"    content="{{BASE_URL}}{% url website.views.embedded_document document.resource_id%}" />
+<meta property="og:title"  content="{{document.title}}" />
+<meta property="og:image"  content="{% static "images/document_collab_picto_facebook_sharing.png" %}">
+<meta property="og:description"  content="Open and collaborative document" />
+{% endblock %}
+
+{% block css %}
+{% compressed_css 'document' %}
+{% endblock %}
+
+{% block uservoice_widget_id %}
+    var userVoiceWidgetId = '{{ USERVOICE_DOCUMENT_WIDGET_ID }}';
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+         var resource_type = '{{document.type}}',
+             resource_id =  '{{ document.resource_id }}';
+    </script>
+    {% require_module 'main_modules/document' %}
+    {% compressed_js 'twitter-flight' %}
+{% endblock %}
+
+{% block nav-links %}
+
+<div id="doc-co-writers">
+	<div class="co_writers_carousel pull-left hide">
+		<a class="carousel_prev"><span>prev</span></a>
+		<a class="carousel_next"><span>next</span></a>
+		<div class="co_writers">
+			<ul>
+			</ul>
+		</div>
+	</div>
+</div>
+{% if nb_views %}
+<div id="nb_views_container">
+    <img class="nb_view_eye" src="{% static "images/nb_view.png" %}">
+    <p class="nb_view">{{nb_views}}</p>
+</div>
+{% endif %}
+{#<div id="doc-actions">#}
+{#	{% if can_invite_cowriters %}#}
+{#	<button id="doc-invite-co-writers" data-role="cowriters" class="btn btn-primary">#}
+{#		Invite co-writers#}
+{#	</button>#}
+{#	{% endif %}#}
+{#    <button id="doc-invite-participants" data-role="participants" class="btn btn-primary">#}
+{#        Invite participants#}
+{#    </button>#}
+{#</div>#}
+
+<div id="doc-actions-alert" class="alert hide">
+	<button type="button" class="close">&times;</button>
+	<span></span>
+</div>
+{% endblock %}
+
+{% block overlay %}
+	{% include "document/document_people_form.html" %}
+
+{#    {% if request.user.is_anonymous %}#}
+{#        {% include "document/document_login_session.html" %}#}
+{#    {% endif %}#}
+
+    {% if first_creation %}
+        {% include "document/document_help_first_creation_form.html" %}
+    {% elif first_participation %}
+        {% include "document/document_help_first_participation_form.html" %}
+    {% endif %}
+
+    <div class="loading hide">
+		<img src="{% static "images/loading.gif" %}">
+	</div>
+{% endblock %}
+
+{% block content %}
+<iframe class="doc-iframe" frameborder="0" src="https://docs.google.com/{{document.type}}/d/{{document.resource_id}}/edit?embedded=true"></iframe>
+
+<div id="social_panel_container">
+	<div id="social_panel_document_editor">
+	  <div id="social_panel" data-text="{{share_text_twitter}}">
+          <button class="close">&times;</button>
+	  </div>
+	</div>
+</div>
+
+<input type="hidden" id="id_unistar" value="{{ request.user.id }}" />
+<input id="resource_id" type="hidden" value="{{ document.resource_id }}">
+{% endblock %}

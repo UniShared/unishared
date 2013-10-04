@@ -1,0 +1,16 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+    <p>Congrats {{ creator.first_name }},</p>
+
+    <p>
+        You’ve just created:<br/><br>
+        <a style="{{ link_underlined }}" href="{{ document.url }}?{{ ga_campaign_params }}">{{ document.title }}</a>
+        <br><br>
+        It is stored in <a style="{{ link_underlined }}" href="
+            {{ BASE_URL }}{% url website.views.profile creator.username %}?{{ ga_campaign_params }}">your learning
+        porfolio</a>
+
+        {% include "mails/start_time_fragment.html" %}
+    </p>
+{% endblock %}

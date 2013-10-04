@@ -1,0 +1,183 @@
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+{% load thumbnail %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text; charset=UTF-8">
+		<base href=".">
+		<meta name="author"
+		content="Clément DELANGUE, Arnaud BRETON">
+		<meta name="copyright" content="copyright 2013 UniShared">
+		<meta name="title" content="UniShared">
+		<meta name="description" content="Your place for social note-taking - in real-time. It's efficient, collaborative and open.">
+		<meta name="keywords"
+		content="Unishared, unishare, note-taking, notes, lecture notes, tools for note-taking, class notes, google docs, mooc, online learning, collaborative learning, e-learning, online classes, online university, blended learning,stay at home mums">
+		<meta name="robots" content="all">
+
+		{% block metadata %}
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="UniShared">
+		<meta property="og:image"
+		content="{% static "images/unishared-logo-simple.png" %}">
+		<meta property="og:description"	content="Your place for social note-taking - in real-time. It's efficient, collaborative and open."/>
+		{% endblock %}
+		<meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}">
+		
+		<script type="text/javascript">
+			if (window.location.href.indexOf('#_=_') > 0) {
+				window.location = window.location.href.replace(/#.*/, '');
+			}
+		</script>
+
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css">
+		{% block css_cdn %}
+		{% endblock %}
+
+		<link href="{% static "css/styles.css" %}" rel="stylesheet" type="text/css">
+
+		{% block css %}
+		{% endblock %}
+		
+		<title>UniShared - {% block title %}{% endblock %}</title>
+		<link href="{% static "images/favicon.ico"  %}" rel="shortcut icon"
+		type="image/x-icon">
+	</head>
+	<body id="home">
+		<div id="fb-root"></div>
+		<header>
+			<div id="header-in">
+				<a name="top"></a><a id="brand" href="{% block logo_link %}/{% endblock %}"><img id="logo"
+				src="{% static "images/logo.png"  %}" alt="UniShared"></a>
+				<nav>
+					{% block nav-links %}{% endblock %}
+				</nav>
+				<div id="header-right">
+					{% if user.is_authenticated %}
+					<a href="{% url website.views.profile request.user.username %}" class ="profile_img userphoto"> {% thumbnail user.get_profile.image "36x36" crop="center" as im %} <img src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}"> {% endthumbnail %} </a>
+					<p id="hello">
+						Hello <a href="{% url website.views.profile request.user.username %}">{{ user.first_name }}</a>
+					</p>
+                    <div id="user_actions">
+                        <a href="{% url website.views.settings %}" rel="tooltip" title="Settings" data-placement="bottom"><i class="icon-wrench"></i></a>
+                        <a href="{% url website.views.sign_off %}" rel="tooltip" title="Sign off" data-placement="bottom"><i class="icon-off"></i></a>
+                    </div>
+					{% else %}
+					<a href="{% url socialauth_begin backend='facebook' %}?next={% url website.views.login %}?next={{ request.path }}" class="fb_connect"></a>
+					{% endif %}
+				</div>
+				
+				{% block header %}{% endblock %}
+			</div>
+		</header>
+		<div id="content">
+			<div id="overlay" class="sign-in">
+				{% block overlay %}{% endblock %}				
+			</div>
+			<div id="subcontent">
+				<input type="hidden" id="my_id_unistar" value="{{ request.user.id }}" />
+				{%block content %}{% endblock %}
+				
+				{% if footer == False %}
+				<footer>
+					<div id="footer_social">
+						<div class="social_links">
+							<a href="http://www.makesense.org" target="_blank">
+							<p>
+								We are a social business
+							</p><img src="{% static "images/makesense.png"  %}"></a>
+						</div>
+						<div class="social_links">
+							<p>
+								Like us on facebook
+							</p>
+							<div class="fb-like-box" data-href="http://www.facebook.com/unishared" data-width="300" data-height="180" data-show-faces="true" data-stream="false" data-header="false"></div>
+						</div>
+						<div class="social_links">
+							<p>
+								Follow us on twitter
+							</p>
+							<a href="https://twitter.com/unishared" class="twitter-follow-button" data-show-count="false">Follow @unishared</a>
+							<script>
+								! function(d, s, id) {
+									var js, fjs = d.getElementsByTagName(s)[0];
+									if (!d.getElementById(id)) {
+										js = d.createElement(s);
+										js.id = id;
+										js.src = "//platform.twitter.com/widgets.js";
+										fjs.parentNode.insertBefore(js, fjs);
+									}
+								}(document, "script", "twitter-wjs");
+							</script>
+							<p>
+								We're on google plus
+							</p>
+							<div class="g-plus" data-width="300" data-href="https://plus.google.com/116892219445549110974?rel=publisher"></div>
+						</div>
+					</div>
+					<div id="footer_links">
+						<ul>
+							<li><a href="{% url website.views.about %}">About</a></li>
+                            <li><a href="{% url website.views.videonotes %}">VideoNot.es</a></li>
+                            <li><a href="{% url website.views.partners %}">Supports</a></li>
+							<li><a href="{% url website.views.yyprod %}">YY Prod</a></li>
+							<li><a href="{% url website.views.open25_leadboard %}">Open25</a></li>
+							<li><a href="{% url website.views.hubs %}">Hubs</a></li>
+                            <!--
+							<li><a href="">Contact</a></li>
+							<li><a href="">Terms of Use</a></li>
+							<li><a href="">Privacy Policy</a></li>
+							-->
+							<li>
+								© Unishared 2013
+							</li>
+						</ul>
+					</div>
+				</footer>
+				{% endif %}
+			</div>
+		</div>
+		
+		<div id="live_documents">
+			<button class="close">&times;</button>
+			<div class="count">
+				<span class="number number_e38f62"></span><span>&nbsp;live document(s)</span>
+			</div>
+			<div class="live_document_title">
+				<a><img src="{% static "images/arrow_to_left.png" %}" class="arrow_to_left"></a>
+				<a id="live_document_link" target="_blank"><h3 id="live_document_title"></h3></a>
+				<a><img src="{% static "images/arrow_to_right.png" %}" class="arrow_to_right"></a>
+			</div>
+			<div class="co_writers_carousel">
+				<a class="carousel_prev"><span>prev</span></a>
+				<a class="carousel_next"><span>next</span></a>
+                <div class="co_writers">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+		</div>
+
+		<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="application/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+		<script type="application/javascript">
+		var fb_appId = '{{FACEBOOK_APP_ID}}',
+		ga_trackId = '{{ GOOGLE_ANALYTICS_TRACK_ID }}',
+		domain = '{{ GOOGLE_ANALYTICS_DOMAIN }}';
+		
+		{% block uservoice_widget_id %}
+		var userVoiceWidgetId = '{{ USERVOICE_WIDGET_ID }}';
+		{% endblock %}
+
+        window.staticUrl = '{{ STATIC_URL }}';
+		</script>
+		
+		{% block js_cdn %}
+		{% endblock %}
+
+        {% block js %}
+        {% endblock %}
+	</body>
+</html>

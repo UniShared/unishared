@@ -1,0 +1,9 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+Congrats {{user.first_name}},
+
+You’ve just participated in:
+{{document.title}} ({{ document.url }}?{{ ga_campaign_params }})
+It is stored in your learning porfolio ({{ BASE_URL }}{% url website.views.profile user.username %}?{{ ga_campaign_params }})
+{% endblock %}

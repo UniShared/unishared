@@ -1,0 +1,6 @@
+{% if object.start_time %}
+This session will start on {{ object.start_time }}. <br>
+{% if object.event_id %}
+A <a href="https://facebook.com/events/{{object.event_id}}/">Facebook event</a> has been created about these notes.
+{% endif %}
+{% endif %}

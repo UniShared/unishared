@@ -1,0 +1,12 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+Howdy {{first_name}}?
+
+Some friends of you have joined UniShared ({{ BASE_URL }}) today:
+{% for friend_profile in friends_profile %}
+* {{ friend_profile.user.first_name }} ({{ BASE_URL }}{% url website.views.profile friend_profile.user.username %}?{{ ga_campaign_params }})
+{% endfor %}
+
+What about taking note ({{ BASE_URL }}{% url website.views.create_document %}?{{ ga_campaign_params }}) with him for your next class, conference or group work? You’ll see, it’ll be fun. Just invite him to any doc or ask him to invite you.
+{% endblock %}

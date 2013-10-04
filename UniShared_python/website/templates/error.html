@@ -1,0 +1,22 @@
+{% extends "base_new_design.html" %}
+
+{% block title %}
+    Oops, something went wrong
+{% endblock %}
+
+{%block content %}
+	<div id="error">
+		<h1>Oops, something went wrong..</h1>
+		<p class="well well-small">
+            {{ error }} <br>
+            {% if back %}
+            <a href="{{back}}" title="Back">Retry please</a> <br>
+            {% else %}
+            <a href="/" title="Home">Go to home</a> <br>
+            Our team has been notified. We are already working on it!
+            If you need help, please <a href="mailto:clement@unishared.com">send us an email</a>.
+        </p>
+		{% endif %}
+	</div>
+	<div class="reset"></div>
+{% endblock %}

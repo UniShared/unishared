@@ -1,0 +1,14 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+    Hi, <br><br>
+
+    A new document has been created on the <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.profile hub.username %}">{{ hub.first_name }}’s hub</a> by <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.profile creator.username %}">{{ creator.first_name }}</a> : <br><br>
+
+    <a style="{{ link_underlined }}" href="{{document.url}}">{{document.title}}</a> <br>
+    <a style="{{ link_underlined }}" href="{{document.url}}">Collaborative and open document</a> <br><br>
+
+    {% include "mails/start_time_fragment.html" %}
+
+    You can find all the hub’s document here: {{ BASE_URL }}{% url website.views.profile hub.username %}
+{% endblock %}

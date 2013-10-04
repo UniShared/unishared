@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<div id="container_hub_name" class="form">
+	<div class="form_wrap">
+		<h2>Name your new hub</h2>
+		<form id="form_hub_name" class="form_input">
+			<div id="fields-blocks">
+				<label for="hub_name" id="base-url">www.unishared.com/
+                <input type="text" id="hub_name" name="hub_name" />
+                </label>
+                <p style="font-style: italic">*Hub's name must be between 2 and 15 characters</p>
+                <img class="userphoto" src="{% static "images/hub_picto.png" %}">
+			</div>
+
+			<div class="clearfix"></div>
+			<button type="submit" class="btn btn-success next_button">Go to my hub!</button>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+Dear {{user.first_name}},
+
+On behalf of all of the members of our <a href="http://www.facebook.com/unishared">community</a>, welcome to UniShared ({{ BASE_URL }}), the place where <span style="color:">note-taking becomes social</span>.
+
+If you haven't, you can try to <a href="{{BASE_URL}}{% url website.views.create_document %}">create a collaborative document</a> or participate to existing ones ({{ BASE_URL }}{% url website.views.profile user.username %}?view=my_documents). To make everyone's learning more efficient, collaborative and open.
+
+What about for example:
+
+* "Collaborative consumption" ({{BASE_URL}}{% url website.views.embedded_document '1tw7WIglDzDVvF2hTTCWjzInkWs4krG9EszQu7UhxyzI' %}) by the OuiShare Crew ({{ BASE_URL }}ouishare)
+* "Gamification" ({{BASE_URL}}{% url website.views.embedded_document '1rUAdy_TXagVXp2x-HanoQvlASOor1m8b6kgkX7TmpWE' %}) by Marion ({{ BASE_URL }}{% url website.views.profile 346 %}), Thibaut ({{ BASE_URL }}{% url website.views.profile 21 %}), Yannick ({{ BASE_URL }}{% url website.views.profile 361 %}) and Clément ({{ BASE_URL }}{% url website.views.profile 9 %})
+* "Creating shared value at the base of the pyramid in developing countries" ({{BASE_URL}}{% url website.views.embedded_document '16baPWS7TJcwSElsqZTx3yf6Kh1LbSupgtpyx1ZHz1Qg' %}) by the MakeSense Crew ({{ BASE_URL }}convergences)
+* All classes ({{BASE_URL}}{% url website.views.profile user.username %}?view=all_documents)
+
+And tell us what you think about it because we're learning too :).
+
+Cheers,
+{% endblock %}

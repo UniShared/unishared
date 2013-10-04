@@ -1,0 +1,19 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+<p>Hi {{user.first_name}}, <br><br>
+
+I’ve seen you logged in on UniShared but didn’t created a collaborative document. You know it just takes seconds and allows you to invite your friends to take notes together in real-time? <br><br>
+
+It works both for classes, conferences, videos, group work or anything else so give it a try. <br><br>
+
+It enables you to:
+    <ul>
+        <li>Get better notes. Why the hell are we all taking them solo?</li>
+        <li>Make your classes/conferences funnier by interacting with people, be they physically with you or not</li>
+        <li>Participate in spreading knowledge by sharing what your learning</li>
+    </ul>
+
+Prepare your next session by <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.profile user.username %}?view=my_documents&{{ ga_campaign_params }})">starting your document</a> now and scheduling it for your next class session.<br><br>
+</p>
+{% endblock %}

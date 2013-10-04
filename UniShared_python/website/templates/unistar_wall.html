@@ -1,0 +1,22 @@
+{% extends "base_new_design.html" %}
+{% load thumbnail %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" charset="utf-8" src="js/home.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="container" style="background-image: url('/static/images/video.png'); height:500px;padding:30px;">
+    <div style="width:960px;">
+        {% for unistar in unistars_100 %}
+        	{% thumbnail unistar "36x36" crop="center" as im %}
+            <img src="{{im.url}}" width="{{ im.width }}" height="{{ im.height }}"> 
+            {% endthumbnail %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

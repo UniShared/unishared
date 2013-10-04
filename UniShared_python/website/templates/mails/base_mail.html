@@ -1,0 +1,10 @@
+{% block content %}{% endblock %}
+
+{% block footer %}
+    <p>
+        <a style="{{ link_underlined }}" href="mailto:clement@unishared.com">Clément</a> & the <a style="{{ link_underlined }}"  href="{{BASE_URL}}?{{ga_campaign_params}}">UniShared</a> team <br>
+        <a style="{{ link_underlined }}" href="http://www.facebook.com/unishared">Facebook</a>, <a style="{{ link_underlined }}" href="https://twitter.com/UniShared">Twitter</a> <br><br>
+
+        <span style="font-size: 12px">If you'd rather not receive notifications, you can unsubscribe <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.disable_emails_notifications %}">here</a></span>
+    </p>
+{% endblock %}

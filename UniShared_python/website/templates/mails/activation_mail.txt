@@ -1,0 +1,17 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+Hi {{user.first_name}},
+
+I’ve seen you logged in on UniShared but didn’t created a collaborative document. You know it just takes seconds and allows you to invite your friends to take notes together in real-time?
+
+It works both for classes, conferences, videos, group work or anything else so give it a try.
+
+It enables you to:
+
+* Get better notes. Why the hell are we all taking them solo?
+* Make your classes more fun by interacting with people, be they in the classroom or not
+* Participate in open education by sharing what your learning
+
+Prepare your next session by starting your document ({{ BASE_URL }}{% url website.views.profile user.username %}?view=my_documents&{{ ga_campaign_params }}) now and scheduling it for your next class session.
+{% endblock %}

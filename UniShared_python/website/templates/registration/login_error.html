@@ -1,0 +1,27 @@
+{% extends "base_new_design.html" %}
+
+{% block title %}Error while login{% endblock %}
+
+{% block content %}
+<div style="width: 700px;margin-top: 80px;margin-left: auto;margin-right: auto;height: 300px;">
+	<h1>Sorry but some error made you impossible to login.</h1>
+	{% if messages %}
+	{% for msg in messages %}
+	<p class="error">
+		{{ msg.message }} ({{ msg.extra_tags }})
+	</p>
+	{% endfor %}
+	{% endif %}
+	{% if error_msg %}
+	<p>
+		Details:
+	</p>
+	<p class="error">
+		{{ error_msg }}
+	</p>
+	{% endif %}
+	<p>
+		Please try again <a href="/">Home</a>
+	</p>
+</div>
+{% endblock %}

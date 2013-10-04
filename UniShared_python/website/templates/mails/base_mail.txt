@@ -1,0 +1,8 @@
+{% block content %}{% endblock %}
+
+{% block footer %}
+Clément & the UniShared ({{BASE_URL}}?{{ga_campaign_params}}) team
+Facebook (https://facebook.com/unishared) - Twitter (https://twitter.com/unishared)
+
+If you'd rather not receive notifications, you can unsubscribe here ({{ BASE_URL }}{% url website.views.disable_emails_notifications %})
+{% endblock %}

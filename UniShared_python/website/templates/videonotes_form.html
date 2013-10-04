@@ -1,0 +1,15 @@
+{% load static %}
+
+<div id="container_videonotes" class="form">
+	<button class="close hide">&times;</button>
+	<div class="alert alert-error hide"></div>
+	<div class="form_wrap">
+		<h2>Discover <a href="http://videonot.es">VideoNot.es</a></h2>
+        <form id="form_people">
+            <h3>The easiest way to take notes on video, everything synchronized</h3>
+            <img src="{% static "images/logo-videonotes.png" %}" alt="VideoNot.es"/>
+			<button type="button" class="btn btn-primary prev_button">Prev</button>
+			<button type="submit" class="btn btn-success next_button">Go to my {{ PUBLIC_DOCUMENT_MODEL_NAME }}!</button>
+		</form>
+	</div>
+</div>

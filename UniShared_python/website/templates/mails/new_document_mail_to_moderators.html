@@ -1,0 +1,10 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+    <p>A new document has started by <a
+            href="{{ BASE_URL }}{% url website.views.profile creator.username %}">{{ creator.first_name }}</a> : <a
+            href="{{ document.url }}">{{ document.title }}</a>
+
+        {% include "mails/start_time_fragment.html" %}
+    </p>
+{% endblock %}

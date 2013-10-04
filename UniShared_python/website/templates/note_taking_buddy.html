@@ -1,0 +1,206 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+
+{% block title %}
+    Meet your note-taking buddy
+{% endblock %}
+
+{% block js %}
+{% require_module 'main_modules/note_taking_buddy' %}
+{% endblock %}
+
+{% block css %}
+{% compressed_css 'note_taking_buddy' %}
+{% endblock %}
+
+{% block metadata %}
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{ FACEBOOK_OPEN_GRAPH_ROOT_NAME }}: http://ogp.me/ns/fb/{{ FACEBOOK_OPEN_GRAPH_ROOT_NAME }}#">
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    <meta property="og:title" content="Meet your note-taking buddies for {{ from_hub.first_name }}"/>
+    <meta property="og:image" content="{% static "images/student_head.png" %}">
+    <meta property="og:description" content="Taking notes alone sucks! So find your perfect note-taking buddies for your courses thanks to UniShared"/>
+{% endblock %}
+
+{% block overlay %}
+<div class="loading hide" xmlns="http://www.w3.org/1999/html">
+	<img src="{% static "images/loading.gif" %}">
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="container" class="sign-in">
+    <input id="form_is_bound" type="hidden" value="{{ form.is_bound }}">
+    <input id="login_url" type="hidden" value="{% url socialauth_begin backend='facebook' %}?next=">
+
+	<div id="alert-error" class="alert alert-error hide" style="width: 470px;margin-left: auto;margin-right: auto;text-align:center;">
+		Something went wrong while updating your profile : <span id="alert-text"></span>, <a onclick="backToClassTitle();">please try again</a>
+	</div>
+
+    <form action="{% url website.views.note_taking_buddy_results hub_id=from_hub.username user_id=request.user.username  %}" class="hide" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+
+    <h2 class="introducing_text">Meet your note taking buddies for <a class="hub_link" href="{% url website.views.profile from_hub.username %}" target="_blank">{{ from_hub.first_name }}</a></h2>
+    <div class="form">
+		<div id="container_passionated_by_subject" class="form hide">
+			<div class="form_wrap">
+				<h2 style="margin-top: -20px;">What is your affinity with the subject?</h2>
+
+                <div class="form_text" data-value="true">
+                    <a>
+                        <p>Passionate</p>
+                        <img src="{% static "images/note_taking_buddy/passionate_yes.png"  %}" title="Passionate by the subject"  >
+                    </a>
+                </div>
+                <div class="form_text or">
+                    <p>
+                        or
+                    </p>
+                </div>
+                <div class="form_text" data-value="false">
+                    <a>
+                        <p>Just curious</p>
+                        <img src="{% static "images/note_taking_buddy/passionate_no.png"  %}" title="Not passionate by the subject"  >
+                    </a>
+                </div>
+			</div>
+		</div>
+
+        <div id="container_note_taking_format" class="form hide">
+            <div class="form_wrap">
+                <h2 style="margin-top: -20px;">Do you prefer?</h2>
+                <div class="form_text" data-value="BULLET_POINTS">
+                    <a>
+                        <p>Bullet points</p>
+                        <img src="{% static "images/note_taking_buddy/format_bulletpoint.png"  %}" title="Bullet points"  >
+                    </a>
+                </div>
+
+                <div class="form_text or">
+                    <p>
+                        or
+                    </p>
+                </div>
+
+                <div class="form_text" data-value="FULL_SENTENCES">
+                    <a>
+                        <p>Full sentences</p>
+                        <img src="{% static "images/note_taking_buddy/format_sentences.png"  %}" title="Full sentences"  >
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-medium btn-primary prev_button">Prev</button>
+            </div>
+        </div>
+
+        <div id="container_behavior" class="form hide">
+            <div class="form_wrap">
+                <h2 style="margin-top: -20px;">How do you want to interact with notes?</h2>
+                <div class="form_text" data-value="WRITE_MOST_NOTES">
+                    <a>
+                        <p>Write most</p>
+                        <img src="{% static "images/note_taking_buddy/behaviour_write.png"  %}" title="Write most of the notes"  >
+                    </a>
+                </div>
+
+                <div class="form_text or">
+                    <p >
+                        or
+                    </p>
+                </div>
+
+                <div class="form_text" data-value="IMPROVE_EXISTING_NOTES">
+                    <a>
+                        <p>Improve them</p>
+                        <img src="{% static "images/note_taking_buddy/behaviour_add.png"  %}" title="Improve existing notes"  >
+                    </a>
+                </div>
+
+                <div class="form_text or">
+                    <p>
+                        or
+                    </p>
+                </div>
+
+                <div class="form_text" data-value="READ_NOTES">
+                    <a>
+                        <p>Read them</p>
+                        <img src="{% static "images/note_taking_buddy/behaviour_read.png"  %}" title="Read them"  >
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-primary prev_button">Prev</button>
+            </div>
+        </div>
+
+        <div id="container_augmented_documents" class="form hide">
+            <div class="form_wrap">
+                <h2 style="margin-top: -20px;">
+                    Do you like when {{ PUBLIC_DOCUMENT_MODEL_NAME }} are
+                    augmented with pictures,
+                    screenshots and links?
+                </h2>
+                <div class="form_text" data-value="true">
+                    <a>
+                        <p>Yes</p>
+                        <img src="{% static "images/note_taking_buddy/augmented_yes.png"  %}" title="Like augmented documents"  >
+                    </a>
+                </div>
+
+                <div class="form_text or">
+                    <p>
+                        or
+                    </p>
+                </div>
+
+                <div class="form_text" data-value="false">
+                    <a>
+                        <p>No</p>
+                        <img src="{% static "images/note_taking_buddy/augmented_no.png"  %}" title="Dislike augmented documents"  >
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-primary prev_button">Prev</button>
+            </div>
+        </div>
+
+        <div id="container_live" class="form hide">
+            <div class="form_wrap">
+                <h2 style="margin-top: -20px;">Do you want to schedule live note-taking sessions with others?</h2>
+                <div class="form_text" data-value="true">
+                    <a>
+                        <p>Yes</p>
+                        <img src="{% static "images/note_taking_buddy/plan_yes.png"  %}" title="Plan live sessions"  >
+                    </a>
+
+                </div>
+
+                <div class="form_text or">
+                    <p>or</p>
+                </div>
+
+                <div class="form_text" data-value="false">
+                    <a>
+                        <p>No</p>
+                        <img src="{% static "images/note_taking_buddy/plan_no.png"  %}" title="Learn at your pace"  >
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-primary prev_button">Prev</button>
+            </div>
+        </div>
+
+        {% if not request.user.is_authenticated %}
+            {% include "document/document_login_session.html" %}
+        {% endif %}
+	</div>
+</div>
+{% endblock %}

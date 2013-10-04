@@ -1,0 +1,14 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+    Hi,
+
+    A new document has been created on the {{ hub.first_name }}’s hub by {{ creator.first_name }} {{ BASE_URL }}{% url website.views.profile creator.username %}:
+
+    {{document.title}} ({{document.url}})
+    Collaborative and open document ({{document.url}})
+
+    {% include "mails/start_time_fragment.txt" %}
+
+    You can find all the hub’s document here: {{ BASE_URL }}{% url website.views.profile hub.username %}
+{% endblock %}

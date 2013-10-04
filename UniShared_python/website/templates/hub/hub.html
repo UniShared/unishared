@@ -1,0 +1,164 @@
+{% extends "accounts/profile_common.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+{% load thumbnail %}
+{% load verbatim %}
+
+{% block metadata %}
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}: http://ogp.me/ns/fb/{{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}#">
+<meta property="og:type"   content="{{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}:hub" />
+<meta property="og:title" content="UniShared - {{ user_profile.first_name }}'s hub">
+{% thumbnail user_profile.get_profile.image "104x104" crop="center" as im %}
+<meta property="og:image" content="{{im.url}}">
+{% endthumbnail %}
+<meta property="og:description"	content="{{user_profile.get_profile.about_me}}"/>
+{% endblock %}
+
+{% block title %}
+{{user_profile.first_name}}
+{% endblock %}
+
+{% block css %}
+{% compressed_css 'hub' %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" charset="utf-8">
+{% if is_my_profile %}
+var is_my_profile = true, max_activities = 11;
+{% else %}
+var is_my_profile = false, max_activities = 12;
+{% endif %}
+
+{% if first_creation %}
+    var first_creation = true;
+{% endif %}
+</script>
+    {% require_module 'main_modules/hub' %}
+    {% compressed_js 'twitter-flight' %}
+{% endblock %}
+
+{% block overlay %}
+   {% include "hub/hub_help_first_creation.html" %}
+   {% include "document/document_people_form.html" %}
+{% endblock %}
+
+{% block nav-links %}
+    <div id="hub-actions">
+        <button id="hub-help" class="btn btn-primary">
+            ?
+        </button>
+{#        <a id="hub-create" href="{% url website.views.create_hub %}" data-role="participants" class="btn btn-primary">#}
+{#            Create your hub#}
+{#        </a>#}
+
+{#        {% if not request.user.is_anonymous %}#}
+{#        {% if is_my_profile %}#}
+{#            <button id="doc-invite-co-writers" data-role="cowriters" class="btn btn-primary">#}
+{#                Invite co-writers#}
+{#            </button>#}
+{#        {% endif %}#}
+{#        <button id="doc-invite-participants" data-role="participants" class="btn btn-primary">#}
+{#            Invite participants#}
+{#        </button>#}
+{#        {% endif %}#}
+    </div>
+
+    <div id="doc-actions-alert" class="alert hide">
+        <button type="button" class="close">&times;</button>
+        <span></span>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<input type="hidden" id="id_unistar" value="{{ user_profile.id }}" />
+<input type="hidden" id="canCreate" value="{{ user_profile.can_create }}" />
+<section>
+	<a href="{{user_profile.get_profile.website_url}}" target="_blank" class="banner">
+		<div id="top_banner" style="background-image: url('{{MEDIA_URL}}{{user_profile.get_profile.image}}')"></div>
+	</a>
+	<div class="organization_information">
+		<p class="organization_description">
+			{{user_profile.get_profile.about_me}}
+		</p>
+		<div class="organization_contact">
+			<div class="social-buttons">
+				{% if user_profile.get_profile.facebook_profile_url %}
+				<a href="{{user_profile.get_profile.facebook_profile_url}}" target="_blank" class="social-button"> <img src="{% static "images/logo_fb.png" %}"/> </a>
+				{% endif %}
+				{% if user_profile.get_profile.twitter_profile_url %}
+				<a href="{{user_profile.get_profile.twitter_profile_url}}" target="_blank" class="social-button"> <img src="{% static "images/logo_tw.png" %}" /> </a>
+				{% endif %}			
+				{% if user_profile.get_profile.linkedin_profile_url %}
+				<a href="{{user_profile.get_profile.linkedin_profile_url}}" target="_blank" class="social-button"> <img src="{% static "images/logo_linkedin.png" %}" /> </a>
+				{% endif %}
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</section>
+<div id="social_panel">
+    <div class="fb-like" data-href="{{ BASE_URL }}{% url website.views.profile user_profile.username %}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="true"></div>
+    <div style="height:10px"></div>
+    <a href="https://twitter.com/share" data-count="vertical" class="twitter-share-button" data-url="{{ BASE_URL }}{% url website.views.profile user_profile.username %}" data-via="unishared" data-lang="en"
+    data-text="This #collaborative and #open notes hub rocks, don't you think?">Tweeter</a>
+    <div style="height:10px"></div>
+    <div class="g-plusone" data-size="tall" data-href="{{ BASE_URL }}{% url website.views.profile user_profile.username %}"></div>
+</div>
+
+<section id="organization_members" class="center hide">
+	<div class="center">
+		<h2 style="display:inline;">
+            Meet the {{ members_role }}
+        </h2>
+		<div class="loading pull-left">
+			<img src="{% static "images/loading.gif" %}">
+		</div>
+		<div class="co_writers_carousel">
+			<a class="carousel_prev"><span>prev</span></a>
+			<a class="carousel_next"><span>next</span></a>
+			<div class="co_writers">
+				<ul></ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="organization_newsfeed">
+	<h2 class="searchLocation">
+        {{ members_role|capfirst }}' notes
+    </h2>
+
+    {% include "search_panel.html" %}
+
+    {% include "activity_feed.html" %}
+	
+	<div style="clear:both;"></div>
+</section>
+
+<!--
+<section id="organization_shout">
+    <marquee scrolldelay="10" scrollamount="2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit !</p>
+    </marquee>
+</section>
+<section id ="organization_entry">
+    <img src="{{ STATIC_URL }}images/150x150.png" height="150" width="150">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div style="clear:both;"></div>
+</section>
+-->
+{% endblock %} 

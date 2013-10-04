@@ -1,0 +1,15 @@
+{% extends "mails/new_document_mail.txt" %}
+
+{% block content %}
+{{ block.super }}
+
+Did you notice that you can invite your friends in seconds to take notes together in real-time with the “Invite” button on the top right corner?
+
+It enables you to:
+
+* Get better notes. Why the hell are we all taking them solo?
+* Make your classes/conferences funnier by interacting with people, be they physically with you or not
+* Participate in spreading knowledge by sharing what your learning
+
+Prepare your next session by starting your document ({{BASE_URL}}{% url website.views.create_document %}?{{ ga_campaign_params }}) now and scheduling it for your next class session.
+{% endblock %}

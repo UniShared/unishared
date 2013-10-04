@@ -1,0 +1,72 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+
+{% block title %}
+YY Prod
+{% endblock %}
+
+{% block js %}
+    {% require_module 'main_modules/yyprod' %}
+{% endblock %}
+
+{% block css %}
+<link href="{% static "css/lightbox.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="bg_light">
+	<div class="wrap" style="padding-top:120px; margin-bottom:70px; min-height:250px;">
+		<p class="well well-small" style="margin-bottom:20px;">The first ever poster about UniShared was designed by <a href="http://unishared.com/profile/thibaut.labarre" target="_blank">Thibaut</a>, one of our student users at that time at University of Washington. And we liked it so much that we started to use it everywhere. This is the power of community! So this page, inspired by an other of our user, <a href="http://unishared.com/profile/49" target="_blank">EmAk</a> is a way to showcase all the funny and creative community work. Feel free to use it, remix it and do your own with joy!
+		You can also submit yours by sending an email to <a href="mailto:adrien@UniShared.com" target="_blank">adrien@UniShared.com</a></p>
+
+		<!-- Posters Creations -->
+		<h2 class="introducing_text">Posters</h2>
+		<a href="{% static "images/yyprod/sexypanda.png" %}" rel="lightbox[yyprodposters]" title="Sexy Panda" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/sexypanda.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/sexy.png" %}" rel="lightbox[yyprodposters]" title="Sexy Girl" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/sexy.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/sexy2.png" %}" rel="lightbox[yyprodposters]" title="Sexy Girl too" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/sexy2.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/sexy3.png" %}" rel="lightbox[yyprodposters]" title="Sexy Boy" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/sexy3.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/keep_calm.png" %}" rel="lightbox[yyprodposters]" title="Keep Calm" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/keep_calm.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/flyer_unishared.png" %}" rel="lightbox[yyprodposters]" title="First poster by Thibaut" lightbox-title='UniShared first poster by <a onclick="window.open(this.href);" href="/21">Thibaut</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/flyer_unishared.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/read_notes.png" %}" rel="lightbox[yyprodposters]" title="How to read notes" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/read_notes.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/notes_papier.png" %}" rel="lightbox[yyprodposters]" title="How to take notes" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/notes_papier.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/chen.png" %}" rel="lightbox[yyprodposters]" title="Choose one of these" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/chen.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/lorem.png" %}" rel="lightbox[yyprodposters]" title="Lorem Ipsum" lightbox-title='UniShared poster by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a> and <a onclick="window.open(this.href);" href="/adriencherpitel">Adrien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/lorem.png" %}">
+		</a>
+		<!-- Important clear -->
+		<div class="clearfix" style="margin-bottom: 20px;"></div>
+		<!-- Others Creations -->
+		<h2 class="introducing_text">Others</h2>
+		<a href="{% static "images/yyprod/404.png" %}" rel="lightbox[yyprodothers]" title="UniShared 404 page concept by Aurélien" lightbox-title='UniShared 404 page by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/404.png" %}">
+		</a>
+		<a href="{% static "images/yyprod/class404.jpg" %}" rel="lightbox[yyprodothers]" title="UniShared 404 page by EmAk" lightbox-title='UniShared 404 page by <a onclick="window.open(this.href);" href="/quit.fb.asap">EmAk</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/class404.jpg" %}">
+		</a>
+		<a href="{% static "images/yyprod/bannersquirrel.png" %}" rel="lightbox[yyprodothers]" title="Squirrels Banner" lightbox-title='Unishared banner for <a href="http://www.lesarchivistes.net/" target="_blank">lesarchivistes</a> by <a onclick="window.open(this.href);" href="/aurelien.dias.1">Aurélien</a>'>
+			<img class="yy_crop" src="{% static "images/yyprod/bannersquirrel.png" %}">
+		</a>
+		<!-- Important clear -->
+		<div class="clearfix"></div>
+	</div>
+</div>
+{% endblock %}

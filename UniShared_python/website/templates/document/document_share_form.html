@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<div id="container_share" class="form hide">
+	<button class="close hide">&times;</button>
+	<div class="alert alert-error hide"></div>
+	<div class="form_wrap">
+		<h2>Invite participants</h2>
+		<img id="share_picto" src="{% static "images/share_picto.png" %}">
+		<div id="social_picto">
+			<a id="social_facebook_picto"> <img id="social_facebook_picto_nb" src="{% static "images/share_fb_nb.png" %}"> <img id="social_facebook_picto_color" src="{% static "images/share_fb.png" %}" class="hide"> </a>
+			<a id="social_twitter_picto" href="{% url socialauth_begin backend='twitter' %}?next=/social/login/twitter-complete"> <img id="social_twitter_picto_nb" src="{% static "images/share_tw_nb.png"  %}"> <img id="social_twitter_picto_color" src="{% static "images/share_tw.png" %}" class="hide"> </a>
+		</div>
+		
+		<form id="form_share">
+			<div id="share_text_container"></div>
+		
+			<input type="checkbox" id="social_facebook" name="social_facebook" class="hide" />
+			<input type="checkbox" id="social_twitter" name="social_twitter" class="hide" />
+			
+			<div class="clearfix"></div>
+			<button type="button" class="btn btn-primary prev_button">Prev</button>
+			<button type="submit" class="btn btn-success next_button">Go to my class!</button>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+</div>

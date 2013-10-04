@@ -1,0 +1,11 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+<p>
+    Hi {{user.first_name}}, <br><br>
+
+    Are you still going to classes or conferences where you could take notes with others? Still wanna learn with awesome people from all over the world? <br><br>
+
+    Prepare your next session by <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.create_document %}?{{ ga_campaign_params }}">starting your document</a> now and scheduling it for your next class session.
+</p>
+{% endblock %}

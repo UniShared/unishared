@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div id="container_help_first_creation" class="form hide">
+    <button class="close hide">&times;</button>
+    <div class="alert alert-error hide"></div>
+    <div class="form_wrap">
+        <h2>This is a hub for <span class="text-participate">collaborative</span> note-taking</h2>
+        <img class="userphoto" src="{% static "images/hub_picto.png" %}"/>
+        <div class="buttons_group">
+            <a class="btn prev_button">Back to the hub</a>
+            <a href="{% url website.views.hubs %}" target="_blank" class="btn">More informations</a>
+            <a href="mailto:clement@unishared.com" class="btn btn-success next_button">Ask for customisation</a>
+        </div>
+    </div>
+</div>

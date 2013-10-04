@@ -1,0 +1,22 @@
+{% extends "base_new_design.html" %}
+
+{% block title %}
+    Oops, something went wrong
+{% endblock %}
+
+{%block content %}
+    <div id="error">
+        <h1 class="introducing_text">Oops, something went wrong while opening your document..</h1>
+
+        <p class="well well-small">
+            {% if resource_id %}
+                Sorry for the inconvenience. <br>
+                You can still access the documents you've created and participated there: <br>
+                <a href="https://docs.google.com/document/d/{{ resource_id }}/edit">https://docs.google.com/document/d/{{ resource_id }}/edit</a>
+            {% endif %}  <br><br>
+            Our team has been notified. We are already working on it! <br>
+            If you need help, please <a href="mailto:clement@unishared.com">send us an email</a>.
+        </p>
+    </div>
+    <div class="reset"></div>
+{% endblock %}

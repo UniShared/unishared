@@ -1,0 +1,40 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+Dear {{user.first_name}},
+
+<p>
+	On behalf of all of the members of our <a style="{{ link_underlined }}" href="http://www.facebook.com/unishared">community</a>, welcome to <a style="{{ link_underlined }}" href="{{BASE_URL}}">UniShared</a>, the place where <strong>note-taking becomes social</strong>.
+</p>
+
+<p>
+	If you haven't, you can try to <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.create_document %}?{{ga_campaign_params}}">create a collaborative document</a> or <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.profile user.username %}?view=all_documents&{{ga_campaign_params}}">participate to existing ones</a>. To make everyone's learning more efficient, collaborative and open.
+</p>
+
+<p>
+	What about for example:
+</p>
+
+<ul>
+	<li>
+		<a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.embedded_document '1tw7WIglDzDVvF2hTTCWjzInkWs4krG9EszQu7UhxyzI' %}?{{ga_campaign_params}}">"Collaborative consumption"</a> by the <a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.profile 'ouishare' %}?{{ga_campaign_params}}">OuiShare Crew</a>
+	</li>
+	<li>
+		<a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.embedded_document '1rUAdy_TXagVXp2x-HanoQvlASOor1m8b6kgkX7TmpWE' %}?{{ga_campaign_params}}">"Gamification"</a> by <a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.profile 346 %}?{{ga_campaign_params}}">Marion</a>, <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.profile 21 %}?{{ga_campaign_params}}">Thibaut</a>, <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.profile 361 %}?{{ga_campaign_params}}">Yannick</a> and <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.profile 9 %}?{{ga_campaign_params}}">Clément</a>
+	</li>
+	<li>
+		<a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.embedded_document '16baPWS7TJcwSElsqZTx3yf6Kh1LbSupgtpyx1ZHz1Qg' %}?{{ga_campaign_params}}">"Creating shared value at the base of the pyramid in developing countries"</a> by the <a style="{{ link_underlined }}" href="{{BASE_URL}}{% url website.views.profile 'convergences' %}">MakeSense Crew</a>
+	</li>
+	<li>
+		<a style="{{link_underlined}}" href="{{BASE_URL}}{% url website.views.profile user.username %}?view=all_documents&{{ga_campaign_params}}">All notes</a>
+	</li>
+</ul>
+
+<p>
+	And tell us what you think about it because we're learning too :).
+</p>
+
+<p>
+	Cheers,
+</p>
+{% endblock %}

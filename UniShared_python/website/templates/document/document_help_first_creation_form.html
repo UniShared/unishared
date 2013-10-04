@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div id="container_help_first_creation" class="form hide">
+	<button class="close hide">&times;</button>
+	<div class="alert alert-error hide"></div>
+	<div class="form_wrap">
+		<h2>This is more fun when <span class="text-participate">collaborative</span> in real-time</h2>
+		<img src="{% static "images/multi_contributing.png" %}"/>
+        <div class="buttons_group">
+            <a class="btn prev_button">Back to {{ PUBLIC_DOCUMENT_MODEL_NAME }}</a>
+            <a href="{% url website.views.create_document %}" target="_blank" class="btn">Schedule a live session</a>
+            <a class="btn btn-success next_button">Invite friends</a>
+        </div>
+	</div>
+</div>

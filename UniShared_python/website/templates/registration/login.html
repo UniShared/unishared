@@ -1,0 +1,92 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load compressed %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block js %}
+{% require_module 'main_modules/login' %}
+{% endblock %}
+
+{% block css %}
+{% compressed_css 'login' %}
+{% endblock %}
+
+{% block overlay %}
+<div class="loading hide">
+	<img src="{% static "images/loading.gif" %}">
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="container" class="sign-in">
+	{% csrf_token %}
+	<div id="alert-error" class="alert alert-error hide" style="width: 470px;margin-left: auto;margin-right: auto;text-align:center;">
+		Something went wrong while updating your profile : <span id="alert-text"></span>, <a onclick="backToClassTitle();">please try again</a>
+	</div>
+	<!-- Inscription part -->
+	<div class="form">
+		<input type="hidden" name="is_student" id="is_student" value="{{request.user.get_profile.is_student|lower}}">
+{#		{% if with_student_lifelonglearner %}#}
+{#		<!-- Inscription part -->#}
+{#		<div id="container_student_lifelonglearner" class="form hide">#}
+{#			<div class="form_wrap">#}
+{#				<h2 style="margin-top: -20px;">Are you a ?</h2>#}
+{#				<a class="form_text form_student">Student</a>#}
+{#				<p class="form_text or">#}
+{#					or#}
+{#				</p>#}
+{#				<a class="form_text form_lifelonglearner">Lifelong#}
+{#				<br>#}
+{#				learner</a>#}
+{#			</div>#}
+{#		</div>#}
+{#		{% endif %}#}
+{##}
+{#		{% if with_organization %}#}
+{#		<div id="container_school" class="form hide">#}
+{#			<div class="form_wrap">#}
+{#				<img src="{% static "images/student_head.png"  %}"  alt="School" style="padding-bottom: 30px;">#}
+{#				<h2>You are currently studying at ?</h2>#}
+{#				<form id="form_school" class="form_input">#}
+{#					<input id="school" name="school" type="text" list="schools">#}
+{#					<datalist id="schools">#}
+{#						<label for="select_schools">Or select from the list:</label>#}
+{#						<select style="border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px;" name="select_schools" id="select_schools">#}
+{#							{% for school in education %}#}
+{#							<option value="{{ school }}">{{ school }}</option>#}
+{#							{% endfor %}#}
+{#						</select>#}
+{#					</datalist>#}
+{#					#}
+{#				<div class="clearfix"></div>#}
+{#				<button type="button" class="btn btn-primary prev_button">Prev</button>#}
+{#				<button id="submit_school" type="submit" class="btn btn-primary next_button">Next</button>#}
+{#				<div class="clearfix"></div>#}
+{#				</form>#}
+{#			</div>#}
+{#		</div>#}
+{#		{% endif %}#}
+
+		{% if with_email %}
+		<div id="container_gmail" class="form hide">
+			<div class="form_wrap">
+				<img src="{% static "images/gmailicon.png"  %}"  alt="Facebook login" style="padding-bottom: 20px; margin-top: 20px;">
+				<h2></h2>
+				<form id="form_gmail" class="form_input">
+					<input type="hidden" name="current_email" id="current_email" value="{{request.user.email}}">
+					<input type="text" name="email" id="email">
+					<div style="clear: both;"></div>
+					<button type="button" class="btn btn-primary prev_button">Prev</button>
+					<button type="submit" class="btn btn-success next_button">Go to my profile!</button>
+					<div class="clearfix"></div>
+				</form>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

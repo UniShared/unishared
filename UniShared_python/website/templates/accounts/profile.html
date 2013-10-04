@@ -1,0 +1,127 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load verbatim %}
+{% load compressed %}
+{% load thumbnail %}
+
+{% block title %}
+{% if is_my_profile %}
+My
+{% else %}
+{{ user_profile.first_name }}'s
+{% endif %}
+Profile
+{% endblock %}
+
+{% block css %}
+    {% compressed_css 'profile' %}
+{% endblock %}
+
+{% block metadata %}
+<meta property="og:title" content="UniShared - {{ user_profile.first_name }}'s profile">
+{% thumbnail user_profile.get_profile.image "104x104" crop="center" as im %}
+<meta property="og:image" content="{{im.url}}">
+{% endthumbnail %}
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        {% if is_my_profile %}
+            var is_my_profile = true;
+
+            {% if documents_count %}
+                var my_documents = true;
+            {% else %}
+                var my_documents = false;
+            {% endif %}
+        {% else %}
+            var is_my_profile = false;
+            var my_documents = true;
+        {% endif %}
+    </script>
+
+    {% require_module 'main_modules/profile' %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div id="social_panel">
+	<div class="fb-like" data-href="{{ BASE_URL }}{% url website.views.profile user_profile.username %}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="true"></div>
+	<div style="height:10px"></div>
+	<a href="https://twitter.com/share" data-count="vertical" class="twitter-share-button" data-url="{{ BASE_URL }}{% url website.views.profile user_profile.username %}" data-via="UniShared" data-lang="en"
+	data-text="This #collaborative and #open notes portfolio rocks, don't you think?">Tweeter</a>
+	<div style="height:10px"></div>
+	<div class="g-plusone" data-size="tall" data-href="{{ BASE_URL }}{% url website.views.profile user_profile.username %}"></div>
+</div>
+<div class="wrap" style="margin-top:100px;">
+	<div id="profile-information">
+		<!--a href="/profile.html"><img id="learn_with_me" style="float:right;margin-bottom:5px;" src="/staticimages/learn_with_me.png" alt="Learn with me"
+		onMouseOver="javascript:window.document.getElementById('learn_with_me').src='/staticimages/learn_with_me_colored.png';"
+		onMouseOut="javascript:window.document.getElementById('learn_with_me').src='/staticimages/learn_with_me.png';"
+		/> </a-->
+		{% thumbnail user_profile.get_profile.image "140x140" crop="center" as im %}
+		<img id="profile-picture" height="140px" width="140px" class="user_photo" src="{{im.url}}" alt="user picture">
+		{% endthumbnail %}
+		<div id="user_information">
+			<h2 class="user-info">{{ user_profile.first_name }}{% if user_profile.get_profile.organization.name %}, {{ user_profile.get_profile.organization.name }}{% endif %}</h2>
+			<div>
+				{% if is_my_profile %}
+				&nbsp;
+				<a id="link_edit_about_me" href="#">edit</a>
+				<div id="save_or_cancel_edit_about_me">
+					<a id="link_save_about_me" href="#">save</a>
+					or
+					<a id="link_cancel_edit_about_me" href="#">cancel</a>
+				</div>
+
+				<form method="post" action="#">
+					{% csrf_token %}
+					<textarea rows="2" cols="100" maxlength="390" id="edit_about_me">{{ user_profile.get_profile.about_me }}</textarea>
+				</form>
+				{% endif %}
+			</div>
+			<div id="expander_about_me">
+				<p id="about_me" class="user-desc">
+					{{ user_profile.get_profile.about_me }}
+				</p>
+			</div>
+		</div>
+	</div>
+	<!--div id="user_social">
+		<p>
+			You'll soon be able to get badges.
+		</p>
+		<img src="{% static "images/unishared_no_badge.png" %}">
+	</div-->
+	<input type="hidden" id="id_unistar" value="{{ user_profile.id }}" />
+    <input type="hidden" id="canCreate" value="{{ user_profile.get_profile.can_create|lower }}" />
+
+    <div id="document_categories">
+        <h1 class="document_category">
+            {% if is_my_profile %}
+                <a id="link_my_documents">My {{ PUBLIC_DOCUMENT_MODEL_NAME }}</a>
+                | <a id="link_all_documents"> All {{ PUBLIC_DOCUMENT_MODEL_NAME }} </a> | <a id="link_hubs" class="inactive" target="_blank">Hubs</a>
+                </h1>
+
+            {% else %}
+                <span class="active">{{ user_profile.first_name }}'s {{ PUBLIC_DOCUMENT_MODEL_NAME }}</span>
+            {% endif %}
+        </h1>
+
+        {% include "search_panel.html" %}
+
+        <div class="alert hide">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <span></span>
+        </div>
+    </div>
+
+	{% include "activity_feed.html" %}
+</div>
+
+<div style="clear:both; height:50px;"></div>
+</div>
+{% endblock %}

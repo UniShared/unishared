@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<div id="container_document_title" class="form">
+	<div class="form_wrap">
+		<h2>Name your new {{ PUBLIC_DOCUMENT_MODEL_NAME }}</h2>
+		<img style="margin: 0px 0px 20px 20px; float: left;"src="{% static "images/new_document_picto.png" %}">
+		<form id="form_document_title" class="form_input">
+			<div id="fields-blocks">
+                {% include "search_panel.html" %}
+
+				<div style="float:left;">
+					<div id="starting_now_container">
+						<p style="display:inline;">
+							Starting now ?
+						</p>
+						<input id="starting_now_yes" type="radio" name="starting_now" value="1">
+						Yes
+						<input id="starting_now_no" type="radio" name="starting_now" value="0" checked="checked">
+						No
+					</div>
+					<div id="create_facebook_event_container" class="hide">
+						<p style="display:inline;">
+							Create a facebook event ?
+						</p>
+						<input id="create_facebook_event" type="checkbox" name="create_facebook_event">
+					</div>
+				</div>
+
+				<div id="datetimepicker" class="hide" style="clear: both;"></div>
+				<input id="starting_time" name="starting_time" type="hidden">
+			</div>
+
+			<div class="clearfix"></div>
+			<button type="submit" class="btn btn-primary next_button">Next</button>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+</div>

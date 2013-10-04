@@ -1,0 +1,86 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load thumbnail %}
+
+{% block title %}
+    #Open25 leaderboard
+{% endblock %}
+
+{% block css %}
+    <link href="{% static "css/open25-leadboard.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block js %}
+    {% require_module 'main_modules/base' %}
+{% endblock %}
+
+{% block metadata %}
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}: http://ogp.me/ns/fb/{{FACEBOOK_OPEN_GRAPH_ROOT_NAME}}#">
+    <meta property="og:type"   content="website" />
+    <meta property="og:url"    content="{{BASE_URL}}{% url website.views.open25_leadboard %}" />
+    <meta property="og:title"  content="#Open25 leaderboard" />
+    <meta property="og:image"  content="{% static "images/25_best.png" %}">
+    <meta property="og:description"  content="Win a week to your dream university to open the best classes!" />
+{% endblock %}
+
+{% block content %}
+    <div id="social_panel">
+        <div class="fb-like" data-href="{{ BASE_URL }}{% url website.views.open25_leadboard %}" data-send="false" data-layout="box_count" data-width="60" data-show-faces="true"></div>
+        <div style="height:10px"></div>
+        <a href="https://twitter.com/share" data-count="vertical" class="twitter-share-button" data-url="{{ BASE_URL }}{% url website.views.open25_leadboard %}" data-via="UniShared" data-lang="en" data-hashtags="open25"
+           data-text="Win a week to your dream university to open the best classes just by taking notes:">Tweeter</a>
+        <div style="height:10px"></div>
+        <div class="g-plusone" data-size="tall" data-href="{{ BASE_URL }}{% url website.views.open25_leadboard %}"></div>
+    </div>
+    <div id="open25-leadboard" class="leadboard">
+        <div>
+            <h2 class="introducing_text">#Open25</h2>
+
+            <p class="well well-small">
+                Thanks to the contribution of 124 awesome members of our <a href="https://www.facebook.com/unishared">community</a>,
+                we crowdfunded the
+                <a href="http://www.kisskissbankbank.com/open-the-25-best-classes-of-the-world">#open25 operation</a>
+                to send five learning freaks to their dream university for one week. So it's time to choose the first
+                lucky one to begin with. He/she will be selected amongst the <strong>top three people</strong> of this leaderboard as of
+                <strong>March 10th, 2013</strong>, after an interview by the selection committee composed of the top <a
+                    href="http://www.kisskissbankbank.com/open-the-25-best-classes-of-the-world">#open25
+                contributors</a>. He/she will have his/her <strong>flight paid to go to his dream university</strong> for a week opening
+                the
+                best classes of the world through UniShared. Let's get started!
+            </p>
+        </div>
+        <h2 class="introducing_text">Leaderboard</h2>
+
+        <div>
+            <a href="{% url website.views.create_document %}" target="_blank" class="btn btn-success">Enter the game by
+                starting your notes</a>
+        </div>
+        <div id="users">
+            {% for username,user_points in users_points %}
+                <div class="user">
+                    <div class="user_profile">
+                        <a href="{% url website.views.profile username %}" target="_blank"><img
+                                class="userphoto info" rel="tooltip" title="{{ user_points.0.first_name }}" src="{{ user_points.0.picture }}"></a>
+                    </div>
+
+                    <div id="nb_views_container">
+                        <div rel="tooltip" title="Rank">
+                            {% if forloop.counter <= 3 %}
+                                <p class="rank text-participate">#{{ forloop.counter }}</p>
+                            {% else %}
+                                <p class="rank">#{{ forloop.counter }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div rel="tooltip" title="Number of participants to notes {{ user_points.0.first_name }} has created/co-written">
+                            <img class="nb_view_eye" src="{% static "images/nb_view.png" %}">
+                            <p class="nb_view">{{ user_points.1 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

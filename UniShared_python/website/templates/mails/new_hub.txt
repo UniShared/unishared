@@ -1,0 +1,5 @@
+{% extends "mails/base_mail.txt" %}
+
+{% block content %}
+New hub created: {{profile_url}} by {{creator_username}} ({{BASE_URL}}{% url website.views.profile creator_username %})
+{% endblock %}

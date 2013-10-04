@@ -1,0 +1,11 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content %}
+    <p>Congrats {{user.first_name}},</p>
+
+    <p>
+        You’ve just participated in:<br/><br>
+        <a style="{{ link_underlined }}" href="{{ document.url }}?{{ ga_campaign_params }}">{{document.title}}</a> <br><br>
+        It is stored in <a style="{{ link_underlined }}" href="{{ BASE_URL }}{% url website.views.profile user.username %}?{{ ga_campaign_params }}">your learning porfolio</a>
+    </p>
+{% endblock %}

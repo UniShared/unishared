@@ -1,0 +1,20 @@
+{% extends "mails/base_mail.html" %}
+
+{% block content  %}
+    <p>
+        Hi, <br><br>
+
+        {{first_name}} is inviting you to take notes collaboratively in real-time and opening them to the world. Will you help to learn differently? <br><br>
+
+        {% if document %}
+            <a style="{{ link_underlined }}" href="{{document.url}}">{{document.title}}</a><br>
+            <a style="{{ link_underlined }}" href="{{document.url}}">Collaborative and open {{ PUBLIC_DOCUMENT_MODEL_NAME }}</a><br><br>
+        {% elif hub %}
+            <a style="{{ link_underlined }}" href="{{hub.url}}">{{hub.title}}</a><br>
+            <a style="{{ link_underlined }}" href="{{hub.url}}">Collaborative and open hub</a><br><br>
+        {% endif %}
+
+        {% include "mails/start_time_fragment.html" %}
+    </p>
+{% endblock %}
+

@@ -1,0 +1,125 @@
+{% extends "base_new_design.html" %}
+{% load staticfiles %}
+{% load require %}
+{% load verbatim %}
+{% load compressed %}
+{% load thumbnail %}
+
+{% block title %}
+    {% if is_current_user_results %}Your{% else %}{{ user_requested.first_name }}'s{% endif %} note-taking buddies for {{ hub.user.first_name }}
+{% endblock %}
+
+{% block css %}
+    {% compressed_css 'note_taking_buddy_results' %}
+{% endblock %}
+
+{% block js %}
+    {% require_module 'main_modules/note_taking_buddy_results' %}
+{% endblock %}
+
+{% block metadata %}
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# {{ FACEBOOK_OPEN_GRAPH_ROOT_NAME }}: http://ogp.me/ns/fb/{{ FACEBOOK_OPEN_GRAPH_ROOT_NAME }}#">
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    <meta property="og:title" content="{{ user_requested.first_name }}'s note-taking buddies for {{ hub.user.first_name }}"/>
+    <meta property="og:image" content="{% static "images/student_head.png" %}">
+    <meta property="og:description" content="Taking notes alone sucks! So find your perfect note-taking buddies for your courses thanks to UniShared"/>
+{% endblock %}
+
+{% block content %}
+    {% if hub %}
+        <input id="fromHub" type="hidden" value="{{ hub.user.id }}">
+    {% endif %}
+
+    <div id="social_panel">
+        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-send="false"
+             data-layout="box_count" data-width="60" data-show-faces="true"></div>
+        <div style="height:10px"></div>
+
+        <a href="https://twitter.com/share" data-count="vertical" class="twitter-share-button"
+           data-url="{{ request.build_absolute_uri }}" data-via="UniShared" data-lang="en"
+        {% if buddies|length %}
+           data-text="Hooray, {{ user_requested.first_name }} found note-taking buddies"
+        {% else %}
+           data-text="Damn it! {{ user_requested.first_name }} hasn't found note-taking buddies... yet! Wanna join?"
+        {% endif %}
+        >Tweeter</a>
+        <div style="height:10px"></div>
+        <div class="g-plusone" data-size="tall"
+             data-href="{{ request.build_absolute_uri }}"></div>
+    </div>
+    <div class="leadboard">
+        <!-- Buddies found -->
+        {% if buddies|length %}
+            <div>
+                <h2 class="introducing_text">Hooray! We found {% if is_current_user_results %}you{% else %}{{ user_requested.first_name }}'s{% endif %} perfect note-taking buddies for <a class="hub_link" href="{% url website.views.profile hub.user.username %}" target="_blank">{{ hub.user.first_name }}</a></h2>
+            </div>
+
+            <div id="users">
+                {% for buddy in buddies %}
+                    <div id="{{ buddy.user.id }}" class="user">
+                        <div  class="user_profile">
+                            <a>
+                                {% thumbnail buddy.user.get_profile.image "90x90" crop="center" as im %}
+                                    <img class="userphoto {% if is_current_user_results %}background_active{% endif %} info" rel="tooltip" title="{% if buddy.user == request.user %}You{% else %}{{ buddy.user.first_name }}{% endif %}"
+                                         src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+
+                        {% if is_current_user_results %}
+                        <div id="nb_views_container">
+                            <a class="profile_link" href="{% url website.views.profile buddy.user.username %}" target="_blank">
+                                <div>
+                                    <img class="nb_view_eye" src="{% static "images/nb_view.png" %}" rel="tooltip" title="See {% if buddy.user == request.user %}your{% else %}{{ buddy.user.first_name }}'s{% endif %} profile">
+                                </div>
+                            </a>
+                            <a class="remove_cowriter">
+                                <div style="padding-left:5px; padding-right: 5px; padding-top: 10px">
+                                    <i class="icon-remove" rel="tooltip" title="Add/remove {{ buddy.user.first_name }}"></i>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if is_current_user_results %}
+                <a id="buddies_action_button_start_notes" href="{% url website.views.create_document %}?from={{ hub.user.id }}" target="_blank" class="btn btn-success">Start taking notes with them</a>
+            {% else %}
+            <div>
+                <a id="buddies_action_button_find_buddies_results" href="{% url website.views.note_taking_buddy hub.user.username %}" target="_blank" class="btn btn-success">Find your buddies</a>
+            </div>
+            {% endif %}
+
+            <div>
+                <div class="clearfix"></div>
+                <h2 class="introducing_text">Join existing notes</h2>
+                {% include "activity_feed.html" %}
+            </div>
+        {% else %}
+            <!-- No buddies found -->
+            <h2 class="introducing_text">
+                Damn it! We haven't found note-taking buddies for {% if is_current_user_results %}you{% else %}{{ user_requested.first_name }}{% endif %} for <a class="hub_link" href="{% url website.views.profile hub.user.username %}" target="_blank">{{ hub.user.first_name }}</a>... yet!
+            </h2>
+            <div>
+            {% if is_current_user_results %}
+                <h3 class="introducing_text">
+                    Share this link for more people to join and
+                    we’ll get back to you later with note-taking
+                    buddies: <a href="{{ BASE_URL }}{% url website.views.note_taking_buddy hub.user.username %}">{{ BASE_URL }}{% url website.views.note_taking_buddy hub.user.username %}</a>
+                </h3>
+            {% else %}
+                <a id="buddies_action_button_find_buddies_no_results" href="{% url website.views.note_taking_buddy hub.user.username %}" target="_blank" class="btn btn-large btn-success">See if you can be note-taking buddies</a>
+            {% endif %}
+            </div>
+
+            <h2 class="introducing_text">or</h2>
+
+            <div>
+                <a id="buddies_action_button_participate_notes" href="{% url website.views.profile user_requested.username %}?view=all_documents" target="_blank" class="btn btn-large btn-success">Participate in other collaborative notes</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
