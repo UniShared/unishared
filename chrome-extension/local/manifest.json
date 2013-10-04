@@ -1,0 +1,14 @@
+{
+  "name": "UniShared Local",
+  "version": "1.0",
+  "icons": { "24" : "unishared-logo-simple-24.png", "128": "unishared-logo-simple-128.png" },
+  "app": {
+    "urls": [
+      "http://local.unishared.com:8000/"
+    ],
+    "launch": {
+      "web_url": "http://local.unishared.com:8000/"
+    }
+  },
+  "manifest_version": 2
+}
