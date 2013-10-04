@@ -1,1 +1,19 @@
 .DS_Store
+
+# Intellij IDEA
+.idea/
+*.iml
+
+# Python
+*.pyc
+
+# Celery
+celerybeat-schedule.db
+
+# UniShared's specific
+setting*.py
+client_secrets_*.json
+
+logs/
+media/
+.sass-cache/
