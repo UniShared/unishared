@@ -1,0 +1,63 @@
+@import "_base";
+
+$column-count:5;
+$column-gap: 60px;
+
+.leadboard {
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 100px;
+
+  .btn-success {
+    margin-bottom: 30px;
+  }
+
+  .rank {
+    font-family: $font-family;
+    font-size: 30px;
+  }
+
+  .first_three_people {
+    color: $main-orange-color;
+  }
+
+  #users {
+    .user {
+      width: 150px;
+      float: left;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      margin-right: 10px;
+
+      .user_profile {
+        display: block;
+        float:left;
+      }
+    }
+
+
+    margin-bottom: 30px;
+  }
+
+  ol {
+    li {
+      margin-bottom: 5px;
+    }
+  }
+
+  #nb_views_container {
+    margin-top: 5px;
+    float: left;
+    margin-left: 5px;
+
+    .nb_view {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .nb_view_eye {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

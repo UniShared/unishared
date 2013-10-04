@@ -1,0 +1,56 @@
+#container {
+  width: 960px;
+  margin-top: 90px;
+
+  .introducing_text {
+    text-align: center;
+  }
+
+  #container_behavior {
+    width: 700px;
+
+    .form_text {
+      width: 25%;
+      text-align: left;
+    }
+
+    .or {
+      width: 7%;
+      text-align: left;
+    }
+  }
+
+  .form {
+    width: 650px;
+    .form_wrap {
+
+      .form_text {
+        padding-top: 10px;
+        text-align: center;
+        width: 30%;
+        display: inline-block;
+        p {
+          display: inline-block;
+        }
+      }
+
+      .or {
+        position: relative;
+        top: -125px;
+      }
+
+      .next_button, .prev_button {
+        position: relative;
+      }
+
+      .next_button {
+        right: 33px;
+      }
+
+      .prev_button {
+        left: 33px;
+        top: -5px;
+      }
+    }
+  }
+}

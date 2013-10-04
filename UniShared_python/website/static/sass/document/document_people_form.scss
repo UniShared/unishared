@@ -1,0 +1,88 @@
+#overlay {
+  #container_people {
+    top: 15%;
+  }
+}
+#container_people {
+  width: 560px;
+  .next_button {
+    right: 10px;
+  }
+  .form_wrap {
+    text-align: left;
+  }
+  .prev_button, .next_button {
+    position: relative;
+    top: 20px;
+  }
+
+  #people_emails_container {
+    margin-top: 10px;
+    margin-left: 21px;
+  }
+}
+
+#jfmfs-container {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+}
+
+#people_emails_list {
+  display: inline-block;
+  .label {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+#jfmfs-friend-container {
+  height: 295px;
+}
+
+#jfmfs-friend-selector {
+  width: 520px;
+  height: 100%;
+  margin: 0 auto;
+  background: #F8F8F8;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#form_people {
+  margin-top: 5px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  span.jfmfs-title {
+    color: #333333;
+    font-weight: bold;
+    margin: 3px 0 2px;
+    font-size: 11px;
+  }
+}
+
+#jfmfs-friend-filter-text, #people_emails_list input {
+  height: 17px;
+  font: 11px verdana, arial, helvetica, sans-serif;
+}
+
+#jfmfs-friend-selector .icon-remove {
+  margin-left: 5px;
+}
+
+#people_emails_list {
+  .icon-remove {
+    margin-left: 5px;
+  }
+  .icon-plus-sign {
+    position: relative;
+    top: -5px;
+  }
+}
+
+#people_emails {
+  width: 150px;
+}

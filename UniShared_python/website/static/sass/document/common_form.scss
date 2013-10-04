@@ -1,0 +1,116 @@
+@import "_base";
+
+.sign-in {
+  .sidebar-to-hide {
+    margin-right: 40px;
+  }
+  .form {
+    width: 520px;
+    padding: 0px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background-color: #f8f8f8;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    .not-student {
+      border-top: 1px solid #cccccc;
+      -webkit-box-shadow: inset -10px 0 60px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: inset -10px 0 60px rgba(0, 0, 0, 0.1);
+      box-shadow: inset -10px 0 60px rgba(0, 0, 0, 0.1);
+    }
+    h2, h3, label {
+      font-size: 24px;
+      font-family: Helvetica, Arial, sans-serif;
+      color: #585858;
+      text-shadow: 1px 1px 0 white;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'BebasNeueRegular', Impact;
+      text-transform: uppercase;
+      font-size: 32px;
+    }
+    p {
+      color: #787975;
+      line-height: 1.8em;
+    }
+  }
+}
+
+.form_student:hover {
+  color: #3c98ee;
+}
+
+.form_lifelonglearner:hover {
+  color: #f16816;
+}
+
+.form_input {
+  input, select {
+    height: 36px;
+    padding-left: 10px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -o-border-radius-topleft: 10px;
+    -o-border-radius-bottomleft: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin: 0px;
+  }
+  input {
+    &[type="submit"], &[type="button"] {
+      padding-left: 0px;
+      width: 36px;
+      height: 38px;
+      border-left: none;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      -o-border-radius: 0px;
+      border-radius: 0px;
+      -webkit-border-top-right-radius: 10px;
+      -webkit-border-bottom-right-radius: 10px;
+      -moz-border-radius-topright: 10px;
+      -moz-border-radius-bottomright: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    &:focus {
+      outline: none;
+      border-color: #b3b3b3;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: inset none;
+      box-shadow: none;
+    }
+    &[type="submit"]:hover {
+      background-color: #EEE;
+    }
+  }
+}
+
+.next_button {
+  float: right;
+}
+
+.prev_button {
+  float: left;
+}
+
+#overlay {
+  .form {
+    top:25%;
+  }
+}

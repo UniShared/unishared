@@ -1,0 +1,34 @@
+@import "_base";
+
+$padding: 15px;
+
+#container_login_session {
+  padding: 0 $padding;
+
+  .form_wrap {
+    padding-top: $padding;
+  }
+  #document_picto {
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  #login-text {
+    text-align: left;
+    margin-left: 200px;
+    padding: 0;
+    font-size: 15px;
+
+    ul {
+      margin-left: 30px;
+      list-style-type: disc;
+      li {
+        color: $text-color;
+      }
+    }
+
+    .login-facebook-text {
+      margin-top: 10px;
+    }
+  }
+}

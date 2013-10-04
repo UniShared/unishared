@@ -1,0 +1,52 @@
+@import "_base";
+
+#fields-blocks {
+  position: relative;
+  margin-right: 20px;
+  top: 5px;
+  width: 281px;
+  float: right;
+}
+
+.search-panel {
+  .search-field {
+    width: 263px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+}
+
+#datetimepicker {
+  display: block;
+  font-size: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+#starting_now_container {
+  height: 25px;
+  text-align: left;
+}
+
+.ui-slider-horizontal {
+  background: none;
+  background-color: $main-blue-color;
+}
+
+#container_document_title {
+  .next_button {
+    position: relative;
+    float: right;
+    right: 33px;
+    top: 20px;
+  }
+  .prev_button {
+    position: relative;
+    float: left;
+    left: 50px;
+    top: 20px;
+  }
+}

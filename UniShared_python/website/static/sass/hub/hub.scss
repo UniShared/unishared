@@ -1,0 +1,222 @@
+#top_banner {
+  margin: 0 auto;
+  margin-top: 71px;
+  width: 960px;
+  background-repeat: no-repeat;
+  background-position: center top;
+  min-height: 220px;
+  .banner {
+    display: block;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#overlay {
+  #container_help_first_creation {
+    width: 600px;
+  }
+
+  #container_help_first_creation {
+
+    .form_wrap {
+      padding: 30px 30px;
+    }
+
+    .buttons_group {
+      margin-top: 15px;
+    }
+  }
+}
+
+nav {
+  width: 620px;
+  #hub-actions {
+    display: inline-block;
+    margin-top: 18px;
+    float: right;
+
+    .btn {
+      margin-right: 10px;
+    }
+  }
+}
+.organization_information {
+  background-color: #FFF;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: -40px;
+  border: 1px solid #CCC;
+  padding: 10px;
+  .organization_description {
+    width: 540px;
+    float: right;
+  }
+  .organization_contact {
+    .social-buttons! {}
+    width: 120px;
+  }
+}
+
+#organization_members, #organization_entry, #organization_shout {
+  width: 940px;
+  margin: 20px auto;
+  border: 1px solid #CCC;
+  padding: 10px;
+  background-color: #FFF;
+}
+
+#organization_members {
+  .center {
+    margin: 0 auto;
+    width: 915px;
+  }
+  .co_writers_carousel {
+    .carousel_prev, .carousel_next {
+      top: 35px;
+    }
+    .carousel_prev {
+      left: -15px;
+    }
+    .carousel_next {
+      right: -15px;
+    }
+  }
+}
+
+#organization_newsfeed {
+  margin: 30px auto;
+  width: 960px;
+  h2 {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  .search-panel {
+    margin-left: 50px;
+  }
+}
+
+.userphoto {
+  margin-top: 3px;
+}
+
+#organization_entry {
+  img {
+    float: left;
+    border: 1px solid #CCC;
+  }
+  p {
+    margin-left: 160px;
+  }
+}
+
+#organization_shout p {
+  font-weight: bold;
+}
+
+.school {
+  margin-top: 100px;
+  h1 {
+    color: #6B6A6B;
+    font-weight: normal;
+    font-size: 22px;
+    text-align: center;
+    margin: 0 0 4px;
+  }
+  .userphoto {
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+  }
+  #introducing_text {
+    margin-bottom: 30px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 564px;
+    font-weight: bold;
+    a {
+      color: #6B6A6B;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+  }
+  #banner-top {
+    height: 316px;
+    margin-top: 80px;
+  }
+  .school-banner {
+    position: relative;
+  }
+  .headband {
+    margin-left: 120px;
+  }
+  .school_description {
+    margin: 15px 142px 20px 200px;
+    width: 500px;
+    position: relative;
+    left: 13%;
+    color: #555;
+    font-size: 12px;
+    text-align: justify;
+  }
+  #introducing_text {
+    color: #555;
+    font-size: 12px;
+    text-align: justify;
+  }
+  .students img {
+    margin: 15px;
+  }
+}
+
+#subcontent {
+  height: 50px;
+}
+
+#footer-text {
+  margin-top: 16px;
+  text-align: center;
+  color: #EBE9EA;
+  font-size: 19px;
+  a {
+    color: #EBE9EA;
+  }
+}
+
+#banner-bottom {
+  height: 126px;
+  padding-top: 28px;
+  margin-top: 15px;
+}
+
+#bottom {
+  position: relative;
+  top: -83px;
+}
+
+#social_panel {
+  position: fixed;
+  left: 10px;
+  background-color: white;
+  width: 60px;
+  padding: 5px;
+  top: 100px;
+  border: 1px solid #CCC;
+}
+
+#doc-actions-alert {
+  margin-top: 55px;
+}
+.alert {
+  text-align: center;
+  max-width: 270px;
+  margin: 0 auto;
+  margin-top: 7px;
+
+  .close {
+    top:-10px;
+    right:-34px;
+  }
+}

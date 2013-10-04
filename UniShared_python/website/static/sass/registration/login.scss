@@ -1,0 +1,35 @@
+@import "_base";
+
+.form_student {
+  height: 120px;
+  width: 190px;
+  color: $main-blue-color;
+  background: url("../../images/blue.png") no-repeat;
+}
+
+.form_lifelonglearner {
+  padding-top: 106px;
+  height: 150px;
+  width: 190px;
+  color: $main-orange-color;
+  background: url("../../images/orange.png") no-repeat;
+}
+
+#container_school, #container_gmail, #container_student_lifelonglearner {
+  .next_button, .prev_button {
+    position: relative;
+    top: 20px;
+  }
+
+  .next_button {
+    right: 33px;
+  }
+
+  .prev_button {
+    left: 33px;
+  }
+}
+
+datalist#schools label {
+  margin-top: 10px;
+}

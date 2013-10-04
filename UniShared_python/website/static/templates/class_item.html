@@ -1,0 +1,36 @@
+<script id="tpl-class" type="text/html">
+	<div id="{{resource_id}}" class="class_item class_{{role}}">
+		<a href="/class/{{resource_id}}" target="_blank"><h2 id="class_title">{{title}}</h2></a>{{#can_delete}}<div src="/static/images/icons/delete_icon.png" title="Delete this class" class="deleteIcon"></div>{{/can_delete}}
+		{{#hasAuthors}}
+		<div class="co_writers_carousel">
+			{{#hasMoreThan5Authors}}
+			<a href="#" class="carousel_prev"><span>prev</span></a>
+			<a href="#" class="carousel_next"><span>next</span></a>
+			{{/hasMoreThan5Authors}}
+			<div class="co_writers">
+				<ul>
+					{{#authors}}
+					<li>
+						<a href="/profile/{{id}}" class="info" title="{{first_name}}" target="_blank"> <img src="{{picture}}" height="36" width="36"> </a>
+					</li>
+					{{/authors}}
+				</ul>
+			</div>
+		</div>
+		{{/hasAuthors}}
+		<div class="share-class-block hide">
+			<img src="/static/images/share_fb.png">
+			<img src="/static/images/share_tw.png">
+		</div>
+		<div id="class_bottom">
+			<div class="share-class"></div>
+			<p class="last_class_edit">
+				last modification: {{updated}}
+			</p>
+			<!--img class="nb_view_eye" src="{{ STATIC_URL }}images/nb_view.png">
+			<p class="nb_view">
+				50
+			</p-->
+		</div>
+	</div>
+</script>

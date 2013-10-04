@@ -1,0 +1,86 @@
+#overlay div#container_kkbb {
+	top:25%;
+}
+
+#container_kkbb {
+	width:560px;
+	height:215px;
+}
+
+#container_kkbb .prev_button {
+	left:10px;
+}
+
+#container_kkbb .next_button {
+	right:10px;
+}
+
+#container_kkbb .form_wrap {
+	text-align: left;
+}
+
+#container_kkbb .prev_button, #container_kkbb .next_button {
+	position: relative;
+	top: 20px;
+}
+	
+#jfmfs-container {
+	position: relative;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+
+#cowriters_emails_list {
+	display: inline-block;
+}
+
+#cowriters_emails_list .label {
+	display: inline-block;
+	margin: 5px;
+}s
+
+#jfmfs-friend-container {
+	height: 295px;
+}
+
+#jfmfs-friend-selector {
+	width: 520px;
+	height: 100%;
+	margin: 0 auto;
+	background: #F8F8F8;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#form_cowriters {
+	margin-top: 5px;
+	padding-left: 20px;
+	padding-bottom: 30px;
+}
+
+#form_cowriters span.jfmfs-title {
+    color: #333333;
+    font-weight: bold;
+    margin: 3px 0 2px;
+    font-size:11px;
+}
+
+#jfmfs-friend-filter-text, #cowriters_emails_list input {
+	height: 17px;
+}
+
+#jfmfs-friend-selector .icon-remove, #cowriters_emails_list .icon-remove  {
+	margin-left: 5px;
+}
+
+#cowriters_emails_list .icon-plus-sign {
+	position:relative;
+	top: -5px;
+}
+
+#cowriters_emails {
+	width:150px;
+}

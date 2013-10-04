@@ -1,0 +1,156 @@
+@import "_base";
+
+.feed {
+  clear: both;
+  min-height: 130px;
+  .container {
+    width: 960px;
+  }
+
+  .loading {
+    top: 20px;
+  }
+
+  .co_writers_carousel {
+    margin-left: 10px;
+
+    .carousel_prev {
+      left: 3px;
+      top: 15px;
+    }
+
+    .carousel_next {
+      right: 3px;
+      top: 15px;
+    }
+  }
+
+  .action_feed_item, .feed_item {
+    width: 310px;
+    height: 130px;
+    margin: 5px;
+    float: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.15);
+    color: #585858;
+  }
+
+  .action_feed_item {
+    background-image: url("../images/document_border.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+
+    h2 {
+      font-size: 24px;
+      font-family: Helvetica, Arial, sans-serif;
+      line-height: 130px;
+      margin-left: 30px;
+    }
+  }
+
+  .feed_item_share {
+    background-position: top left;
+  }
+
+  .feed_item_participate {
+    background-position: 0px -200px;
+  }
+
+  .feed_item_no_interaction {
+    background-position: bottom left;
+  }
+
+  .nb_view {
+    color: $text-color;
+    font-family: BebasNeueRegular;
+    line-height: 1.2em;
+    text-align: center;
+  }
+
+  .feed_item {
+    background-repeat: no-repeat;
+    background-image: url("../images/document_border.png");
+
+    .feed_item_title {
+      h2 {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        margin: 10px 10px 0px 20px;
+        width: 259px;
+        display: inline-block;
+        height: 40px;
+      }
+
+      .deleteIcon {
+        display: inline-block;
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        height: 11px;
+        width: 11px;
+        background-image: url('../images/icons/delete_icon.png');
+        background-position: top left;
+        &:hover {
+          background-position: bottom left;
+        }
+      }
+    }
+
+    .feed_item_body {
+      height: 55px;
+    }
+
+    .feed_item_bottom {
+      width: 310px;
+
+      .last_document_edit {
+        color: #585858;
+        font-size: 12px;
+        float: right;
+        margin-right: 10px;
+        margin-top: 0px;
+      }
+
+      .nb_views_container {
+        margin-left: 14px;
+        width: 50px;
+
+        .nb_view {
+          font-size: 17px;
+        }
+
+        .nb_view_eye {
+          float: left;
+          margin-top: 5px;
+          background-image: url('../images/nb_view.png');
+          width: 25px;
+          height: 10px;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+
+  .hub_feed_item {
+    .feed_item_title {
+      .userphoto {
+        float: left;
+        margin-left: 15px;
+        margin-top: 4px;;
+      }
+
+      h2 {
+        width: 225px;
+      }
+    }
+    .feed_item_body {
+      padding-top: 5px;
+      padding-left: 5px;
+
+      .co_writers_carousel {
+        margin-top: 10px;
+      }
+    }
+  }
+}

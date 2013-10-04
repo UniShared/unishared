@@ -1,0 +1,19 @@
+<script id="tpl-live-popup" type="text/html">
+	<div id="live_classes">
+		<a href="#" class="close"><img src="{{ STATIC_URL }}images/close_button.png"></a>
+		<div class="count">
+			<img src="{{ STATIC_URL }}images/dot.png" class="live_dot">
+			<span class="number number_e38f62"></span><span>&nbsp;live classes</span>
+		</div>
+		<h3><a href="/class/{{resource_id}}" target="_blank" id="live_classes_title">{{title}}</a></h3>
+		{{#creator}}
+		<a href="/profile/{{username}}" target="_blank" id="live_classes_profile_link" title="{{first_name}}"><img src="{{picture}}" id="live_classes_profile_image" class="student" width="54px" height="54px"></a>
+		{{/creator}}
+		<a href="/class/{{resource_id}}" target="_blank" id="live_classes_resource_link"><img src="{{ STATIC_URL }}/images/thumbnail.png" id="live_classes_thumbnail" width="130px"></a>
+		<div class="bottom">
+			<a><img src="{{ STATIC_URL }}/images/arrow_to_left.png" class="arrow_to_left"></a>
+			<span id="live_classes_current_id">{{current_class}}</span> / <span class="number" style="margin-right: 10px;">{{total_classes}}</span>
+			<a><img src="{{ STATIC_URL }}/images/arrow_to_right.png" class="arrow_to_right"></a>
+		</div>
+	</div>
+</script>

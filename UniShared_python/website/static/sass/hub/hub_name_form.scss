@@ -1,0 +1,28 @@
+#container_hub_name {
+  .next_button {
+    position: relative;
+    float: right;
+    right: 33px;
+    top: 20px;
+  }
+  .prev_button {
+    position: relative;
+    float: left;
+    left: 50px;
+    top: 20px;
+  }
+
+  #fields-blocks {
+    #base-url {
+      font-family: 'BebasneueRegular';
+      font-size: 20px;
+    }
+
+    #hub_name {
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+  }
+}
